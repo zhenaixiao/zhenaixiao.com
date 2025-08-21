@@ -3,337 +3,125 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Zhenai Xiao — Strategic Communications & PR</title>
-  <meta name="description" content="Strategic communicator and PR specialist helping organizations and individuals define who they are—and express it with clarity and impact. View work, design, and contact Zhenai Xiao." />
+  <title>Zhenai Xiao — Coming Soon</title>
+  <meta name="description" content="Zhenai Xiao — Communications & PR Specialist. Bilingual coming‑soon page with a professional animated oval aura and subtle motion element." />
   <script src="https://cdn.tailwindcss.com"></script>
-  <style>html{scroll-behavior:smooth}</style>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Zhenai Xiao",
-    "jobTitle": "Strategic Communicator & PR Specialist",
-    "email": "mailto:communications@zhenaixiao.com",
-    "url": "https://zhenaixiao.com"
-  }
-  </script>
+
+  <!-- Montserrat only -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{ --aura: 221 83% 53%; /* Tailwind blue-500 as HSL (H S% L%) */ }
+    html { scroll-behavior: smooth; }
+    body { font-family: "Montserrat", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif; }
+
+    /* ===== Aura (elliptical radial gradient) ===== */
+    .aura { position: absolute; inset: 0; pointer-events: none; filter: saturate(110%); }
+    .aura::before {
+      content: ""; position: absolute; inset: -15%;
+      background: radial-gradient(ellipse at center,
+        hsl(var(--aura) / 0.20) 0%,
+        hsl(var(--aura) / 0.14) 20%,
+        hsl(var(--aura) / 0.08) 40%,
+        transparent 65%);
+      filter: blur(28px);
+      transform: scaleX(1.9) scaleY(0.85);
+      animation: auraPulse 9s ease-in-out infinite;
+    }
+
+    @keyframes auraPulse {
+      0%, 100% { opacity: .75; transform: scaleX(1.75) scaleY(0.82); }
+      50%      { opacity: .95; transform: scaleX(2.05) scaleY(0.90); }
+    }
+
+    /* ===== Subtle orbital highlight (second motion element) ===== */
+     50% { transform: translateY(calc(-50% + 6px)); } } }
+
+    /* Reduce motion for accessibility */
+    @media (prefers-reduced-motion: reduce) {
+      .aura::before { animation: none !important; }
+    }
+
+    /* Utility: soft divider line */
+    .divider { height:1px; background: linear-gradient(90deg, transparent, rgba(15,23,42,.08), transparent); }
+  </style>
 </head>
-<body class="min-h-screen text-slate-900 bg-gradient-to-b from-white via-slate-50 to-white">
-  <!-- Nav -->
-  <header class="sticky top-0 z-40 backdrop-blur supports-[backdrop-filter]:bg-white/70 border-b border-slate-200">
-    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-      <a href="#home" class="font-semibold text-lg tracking-tight">Zhenai Xiao</a>
-      <nav class="hidden md:flex items-center gap-6">
-        <a href="#services" class="hover:text-slate-600">Services</a>
-        <a href="#work" class="hover:text-slate-600">Work</a>
-        <a href="#about" class="hover:text-slate-600">About</a>
-        <a href="#contact" class="hover:text-slate-600">Contact</a>
-      </nav>
-      <a href="mailto:communications@zhenaixiao.com?subject=Project%20Inquiry" class="inline-flex items-center gap-2 rounded-xl bg-slate-900 text-white px-4 py-2 text-sm font-medium hover:bg-slate-700">
-        <svg class="h-4 w-4" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 2v.511l-8 5.333-8-5.333V6h16ZM4 18V8.156l7.385 4.915a1 1 0 0 0 1.23 0L20 8.156V18H4Z"/></svg>
-        Email me
-      </a>
-    </div>
-  </header>
+<body class="min-h-screen bg-gradient-to-b from-white via-slate-50 to-white text-slate-900">
+  <main class="min-h-screen grid place-items-center px-6 py-10">
+    <div class="w-full max-w-3xl">
+      <!-- Language toggle -->
+      <div class="flex items-center justify-center gap-2 mb-6">
+        <button id="btn-en" class="px-3 py-1.5 text-sm rounded-full border border-slate-300 bg-white">English</button>
+        <button id="btn-fr" class="px-3 py-1.5 text-sm rounded-full border border-slate-300 bg-white">Français</button>
+      </div>
 
-  <!-- Hero -->
-  <section id="home" class="relative">
-    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
-      <div class="grid md:grid-cols-2 gap-10 items-center">
-        <div>
-          <p class="uppercase text-xs tracking-widest text-slate-500">Strategic Communications • Public Relations • Content</p>
-          <h1 class="mt-3 text-4xl sm:text-5xl font-extrabold tracking-tight">Define who you are—express it with clarity and impact</h1>
-          <p class="mt-4 text-slate-600 leading-relaxed">
-            I’m a strategic communicator and PR specialist. I help organizations and individuals clarify their voice, build trust, and move people to act. My work spans strategy and positioning, brand and reputation, media and stakeholders, social content systems, and design for communications.
-          </p>
-          <div class="mt-6 flex flex-wrap gap-3">
-            <a href="#work" class="inline-flex items-center gap-2 rounded-xl border border-slate-200 px-4 py-2 font-medium hover:bg-white shadow-sm">
-              View portfolio
-              <svg class="h-4 w-4" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13 5l7 7-7 7v-4H4v-6h9V5z"/></svg>
-            </a>
-            <a href="mailto:communications@zhenaixiao.com?subject=Project%20Inquiry&body=Tell%20me%20a%20bit%20about%20your%20project%20(timelines,%20goals,%20audience)." class="inline-flex items-center gap-2 rounded-xl bg-slate-900 text-white px-4 py-2 font-medium hover:bg-slate-700">Book a consult</a>
+      <!-- Card with animated aura -->
+      <div class="relative isolate overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm p-10">
+        <!-- Animated background layers -->
+        <div class="aura" aria-hidden="true"></div>
+        </div>
+
+        <!-- EN -->
+        <section id="en" class="space-y-4 text-center">
+          <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight">Zhenai Xiao</h1>
+          <p class="text-lg sm:text-xl text-slate-600">Communications & PR Specialist</p>
+          <div class="divider mx-auto my-4 w-32"></div>
+          <div class="inline-flex items-center gap-2 text-slate-600 justify-center">
+            <span>Coming&nbsp;soon…</span>
+            <span class="relative inline-flex h-2.5 w-2.5">
+              <span class="absolute inline-flex h-2.5 w-2.5 rounded-full bg-slate-400 opacity-75 animate-ping"></span>
+              <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-slate-500"></span>
+            </span>
           </div>
-          <div class="mt-6 text-sm text-slate-500">Prefer email? <a class="underline" href="mailto:communications@zhenaixiao.com">communications@zhenaixiao.com</a></div>
-        </div>
-        <div>
-          <div class="relative aspect-[4/3] rounded-3xl shadow-xl bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-slate-200 via-white to-slate-100 overflow-hidden">
-            <div class="absolute inset-0 p-6 flex flex-col justify-between">
-              <div>
-                <span class="inline-flex items-center rounded-full bg-white/80 ring-1 ring-slate-200 px-3 py-1 text-xs font-medium text-slate-600">Currently taking select projects</span>
-              </div>
-              <div class="space-y-2">
-                <div class="inline-flex items-center rounded-xl bg-white/80 ring-1 ring-slate-200 px-3 py-2 text-sm text-slate-700 shadow-sm">Strategy & positioning</div>
-                <div class="inline-flex items-center rounded-xl bg-white/80 ring-1 ring-slate-200 px-3 py-2 text-sm text-slate-700 shadow-sm">Brand & reputation</div>
-                <div class="inline-flex items-center rounded-xl bg-white/80 ring-1 ring-slate-200 px-3 py-2 text-sm text-slate-700 shadow-sm">Media & stakeholders</div>
-                <div class="inline-flex items-center rounded-xl bg-white/80 ring-1 ring-slate-200 px-3 py-2 text-sm text-slate-700 shadow-sm">Social content & design</div>
-              </div>
-            </div>
+          <div class="pt-4 text-sm text-slate-500">Contact: <a class="underline" href="mailto:communications@zhenaixiao.com">communications@zhenaixiao.com</a></div>
+        </section>
+
+        <!-- FR -->
+        <section id="fr" class="space-y-4 text-center hidden">
+          <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight">Zhenai Xiao</h1>
+          <p class="text-lg sm:text-xl text-slate-600">Spécialiste en communications et relations publiques</p>
+          <div class="divider mx-auto my-4 w-32"></div>
+          <div class="inline-flex items-center gap-2 text-slate-600 justify-center">
+            <span>Site en création…</span>
+            <span class="relative inline-flex h-2.5 w-2.5">
+              <span class="absolute inline-flex h-2.5 w-2.5 rounded-full bg-slate-400 opacity-75 animate-ping"></span>
+              <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-slate-500"></span>
+            </span>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Services -->
-  <section id="services" class="py-16 sm:py-20">
-    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">Services</h2>
-      <p class="mt-2 text-slate-600 max-w-2xl">Purpose‑driven support, from strategy to execution.</p>
-      <div class="mt-8 grid md:grid-cols-2 xl:grid-cols-4 gap-5">
-        <div class="rounded-2xl border border-slate-200 p-6 bg-white shadow-sm">
-          <h3 class="font-semibold">Strategy & Positioning</h3>
-          <ul class="mt-3 space-y-2 text-sm text-slate-700">
-            <li class="flex gap-2"><span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-slate-900"></span><span>Messaging architecture & narratives</span></li>
-            <li class="flex gap-2"><span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-slate-900"></span><span>Communication plans & roadmaps</span></li>
-            <li class="flex gap-2"><span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-slate-900"></span><span>Stakeholder mapping & insights</span></li>
-          </ul>
-        </div>
-        <div class="rounded-2xl border border-slate-200 p-6 bg-white shadow-sm">
-          <h3 class="font-semibold">Brand & Reputation</h3>
-          <ul class="mt-3 space-y-2 text-sm text-slate-700">
-            <li class="flex gap-2"><span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-slate-900"></span><span>Reputation frameworks</span></li>
-            <li class="flex gap-2"><span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-slate-900"></span><span>Issues & crisis readiness</span></li>
-            <li class="flex gap-2"><span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-slate-900"></span><span>Spokesperson coaching</span></li>
-          </ul>
-        </div>
-        <div class="rounded-2xl border border-slate-200 p-6 bg-white shadow-sm">
-          <h3 class="font-semibold">Media & Stakeholders</h3>
-          <ul class="mt-3 space-y-2 text-sm text-slate-700">
-            <li class="flex gap-2"><span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-slate-900"></span><span>Media kits, pitches, & briefings</span></li>
-            <li class="flex gap-2"><span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-slate-900"></span><span>Op‑eds & thought leadership</span></li>
-            <li class="flex gap-2"><span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-slate-900"></span><span>Community & partner engagement</span></li>
-          </ul>
-        </div>
-        <div class="rounded-2xl border border-slate-200 p-6 bg-white shadow-sm">
-          <h3 class="font-semibold">Social & Content Systems</h3>
-          <ul class="mt-3 space-y-2 text-sm text-slate-700">
-            <li class="flex gap-2"><span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-slate-900"></span><span>Content pillars & editorial calendars</span></li>
-            <li class="flex gap-2"><span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-slate-900"></span><span>Templates & asset libraries</span></li>
-            <li class="flex gap-2"><span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-slate-900"></span><span>Measurement & optimization</span></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Work -->
-  <section id="work" class="py-16 sm:py-20 bg-slate-50">
-    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-      <div class="flex items-end justify-between gap-6 flex-wrap">
-        <div>
-          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">Selected Work</h2>
-          <p class="mt-2 text-slate-600 max-w-2xl">Case studies across government, consulting, and advocacy. Filter by category or search by keyword.</p>
-        </div>
-        <div class="flex items-center gap-2">
-          <svg class="h-5 w-5 text-slate-400" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 5h18v2H3V5zm4 6h10v2H7v-2zm4 6h2v2h-2v-2z"/></svg>
-          <div class="flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-2">
-            <svg class="h-4 w-4 text-slate-400" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 5 1.5-1.5-5-5ZM9.5 14A4.5 4.5 0 1 1 14 9.5 4.505 4.505 0 0 1 9.5 14Z"/></svg>
-            <input id="searchInput" class="outline-none text-sm placeholder:text-slate-400" placeholder="Search projects..." />
-          </div>
-        </div>
+          <div class="pt-4 text-sm text-slate-500">Contact&nbsp;: <a class="underline" href="mailto:communications@zhenaixiao.com">communications@zhenaixiao.com</a></div>
+        </section>
       </div>
 
-      <div id="categoryButtons" class="mt-6 flex flex-wrap gap-2"></div>
-
-      <div id="projectGrid" class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-
-      <h3 class="mt-12 text-xl font-semibold">Design Gallery</h3>
-      <p class="text-slate-600 text-sm">Visuals that support the work—brand one‑pagers, decks, and campaign assets.</p>
-      <div id="designGrid" class="mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+      <footer class="mt-6 text-center text-xs text-slate-400">© <span id="year"></span> Zhenai Xiao</footer>
     </div>
-  </section>
-
-  <!-- About -->
-  <section id="about" class="py-16 sm:py-20">
-    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 grid lg:grid-cols-3 gap-10 items-start">
-      <div class="lg:col-span-2">
-        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">About Zhenai</h2>
-        <p class="mt-3 text-slate-700 leading-relaxed">
-          I’m a communications and PR specialist with experience across government, consulting, and advocacy. I help teams define their identity and express it with clarity and impact—through strategy, media, content, and design. My approach is practical, collaborative, and outcomes‑focused.
-        </p>
-        <ul class="mt-4 grid sm:grid-cols-2 gap-2 text-slate-700">
-          <li>• Strategy & positioning</li>
-          <li>• Brand & reputation management</li>
-          <li>• Media relations & stakeholder engagement</li>
-          <li>• Social content systems & design for comms</li>
-        </ul>
-      </div>
-      <aside class="rounded-2xl border border-slate-200 p-6 bg-white shadow-sm">
-        <h3 class="font-semibold">Availability</h3>
-        <p class="mt-1 text-sm text-slate-600">Now booking for the next quarter. Project‑based and retainers available.</p>
-        <div class="mt-4">
-          <a href="mailto:communications@zhenaixiao.com?subject=Availability%20check" class="inline-flex items-center gap-2 rounded-xl bg-slate-900 text-white px-4 py-2 text-sm font-medium hover:bg-slate-700">
-            <svg class="h-4 w-4" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 2v.511l-8 5.333-8-5.333V6h16ZM4 18V8.156l7.385 4.915a1 1 0 0 0 1.23 0L20 8.156V18H4Z"/></svg>
-            Check availability
-          </a>
-        </div>
-      </aside>
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact" class="py-16 sm:py-20 bg-slate-50">
-    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">Let’s work together</h2>
-      <p class="mt-2 text-slate-600">Email me at <a class="underline" href="mailto:communications@zhenaixiao.com">communications@zhenaixiao.com</a> or send a quick brief below.</p>
-
-      <form id="contactForm" class="mt-6 grid grid-cols-1 gap-4">
-        <div class="grid sm:grid-cols-2 gap-4">
-          <label class="block">
-            <span class="text-sm text-slate-700">Your name</span>
-            <input name="name" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2" placeholder="Jane Doe" />
-          </label>
-          <label class="block">
-            <span class="text-sm text-slate-700">Your email</span>
-            <input type="email" name="email" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2" placeholder="jane@email.com" />
-          </label>
-        </div>
-        <label class="block">
-          <span class="text-sm text-slate-700">Topic</span>
-          <input name="topic" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2" placeholder="Campaign rollout, media training, etc." />
-        </label>
-        <label class="block">
-          <span class="text-sm text-slate-700">Message</span>
-          <textarea name="message" rows="5" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2" placeholder="Goals, audience, timelines, and budget (if known)."></textarea>
-        </label>
-        <div>
-          <button type="submit" class="inline-flex items-center gap-2 rounded-xl bg-slate-900 text-white px-4 py-2 font-medium hover:bg-slate-700">
-            <svg class="h-4 w-4" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13 5l7 7-7 7v-4H4v-6h9V5z"/></svg>
-            Send email
-          </button>
-        </div>
-      </form>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="py-10 border-t border-slate-200">
-    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <p class="text-sm text-slate-500">© <span id="year"></span> Zhenai Xiao. All rights reserved.</p>
-      <div class="text-sm text-slate-600">Contact: <a class="underline" href="mailto:communications@zhenaixiao.com">communications@zhenaixiao.com</a></div>
-    </div>
-  </footer>
+  </main>
 
   <script>
-    // ---- Data you can edit ----
-    const PROJECTS = [
-      { id: 1, title: "National Campaign Rollout", category: "Communications", year: 2025, blurb: "Multi‑channel launch plan: messaging framework, executive remarks, media kit, and content calendar.", tags: ["Messaging","Media","Launch"], img: "https://picsum.photos/seed/comms1/800/500", link: "#" },
-      { id: 2, title: "Reputation & Issues Management", category: "PR", year: 2024, blurb: "Rapid‑response protocols and spokesperson training to protect brand trust during a sensitive moment.", tags: ["Crisis","Training","Stakeholders"], img: "https://picsum.photos/seed/pr1/800/500", link: "#" },
-      { id: 3, title: "Social Content System", category: "Social", year: 2025, blurb: "Evergreen content pillars, post templates, and analytics loop to grow and sustain engagement.", tags: ["Content","Analytics","Templates"], img: "https://picsum.photos/seed/social1/800/500", link: "#" },
-      { id: 4, title: "Design: Event Poster Series", category: "Design", year: 2024, blurb: "Clean, legible poster system adapted across print, stories, and screens.", tags: ["Branding","Layout","Accessibility"], img: "https://picsum.photos/seed/design1/800/500", link: "#" }
-    ];
-
-    const DESIGNS = [
-      { id: "d1", title: "Brand One‑Pager", img: "https://picsum.photos/seed/onepager/600/400" },
-      { id: "d2", title: "Social Carousel", img: "https://picsum.photos/seed/carousel/600/400" },
-      { id: "d3", title: "Media Kit Cover", img: "https://picsum.photos/seed/mediakit/600/400" }
-    ];
-
-    const CATEGORIES = ["All", "Communications", "PR", "Social", "Design"];
-
-    // ---- State ----
-    let activeCategory = "All";
-    let query = "";
-
-    // ---- Elements ----
-    const categoryButtonsEl = document.getElementById('categoryButtons');
-    const projectGridEl = document.getElementById('projectGrid');
-    const designGridEl = document.getElementById('designGrid');
-    const searchInputEl = document.getElementById('searchInput');
-
-    // ---- Renderers ----
-    function renderCategoryButtons() {
-      categoryButtonsEl.innerHTML = CATEGORIES.map(c => `
-        <button data-cat="${c}"
-          class="px-3 py-1.5 rounded-full text-sm border ${activeCategory === c ? 'bg-slate-900 text-white border-slate-900' : 'bg-white text-slate-700 border-slate-200 hover:border-slate-300'}">
-          ${c}
-        </button>
-      `).join('');
-
-      categoryButtonsEl.querySelectorAll('button').forEach(btn => {
-        btn.addEventListener('click', () => {
-          activeCategory = btn.getAttribute('data-cat');
-          renderCategoryButtons();
-          renderProjects();
-        });
-      });
+    // Language toggle
+    const en = document.getElementById('en');
+    const fr = document.getElementById('fr');
+    const btnEn = document.getElementById('btn-en');
+    const btnFr = document.getElementById('btn-fr');
+    function setLang(lang){
+      if(lang === 'fr'){
+        en.classList.add('hidden'); fr.classList.remove('hidden');
+        btnFr.classList.add('bg-slate-900','text-white','border-slate-900');
+        btnEn.classList.remove('bg-slate-900','text-white','border-slate-900'); btnEn.classList.add('bg-white');
+        localStorage.setItem('zx-lang','fr');
+      } else {
+        fr.classList.add('hidden'); en.classList.remove('hidden');
+        btnEn.classList.add('bg-slate-900','text-white','border-slate-900');
+        btnFr.classList.remove('bg-slate-900','text-white','border-slate-900'); btnFr.classList.add('bg-white');
+        localStorage.setItem('zx-lang','en');
+      }
     }
+    btnEn.addEventListener('click', ()=>setLang('en'));
+    btnFr.addEventListener('click', ()=>setLang('fr'));
 
-    function matchesQuery(p) {
-      if (!query) return true;
-      const q = query.toLowerCase();
-      return (
-        p.title.toLowerCase().includes(q) ||
-        p.blurb.toLowerCase().includes(q) ||
-        p.tags.join(' ').toLowerCase().includes(q)
-      );
-    }
-
-    function renderProjects() {
-      const visible = PROJECTS.filter(p => (activeCategory === 'All' || p.category === activeCategory) && matchesQuery(p));
-      projectGridEl.innerHTML = visible.map(p => `
-        <article class="group rounded-2xl bg-white border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-          <div class="aspect-[4/3] bg-slate-100">
-            <img src="${p.img}" alt="" class="h-full w-full object-cover" />
-          </div>
-          <div class="p-4">
-            <div class="flex items-center justify-between">
-              <span class="text-xs uppercase tracking-widest text-slate-500">${p.category}</span>
-              <span class="text-xs text-slate-500">${p.year}</span>
-            </div>
-            <h3 class="mt-2 font-semibold text-lg">${p.title}</h3>
-            <p class="mt-1 text-sm text-slate-600">${p.blurb}</p>
-            <div class="mt-3 flex flex-wrap gap-2">
-              ${p.tags.map(t => `<span class="text-xs rounded-full bg-slate-100 px-2.5 py-1 text-slate-600 border border-slate-200">${t}</span>`).join('')}
-            </div>
-            <div class="mt-4">
-              <a href="${p.link}" class="inline-flex items-center gap-2 text-sm font-medium text-slate-800 hover:underline">
-                View details <svg class="h-4 w-4" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13 5l7 7-7 7v-4H4v-6h9V5z"/></svg>
-              </a>
-            </div>
-          </div>
-        </article>
-      `).join('');
-    }
-
-    function renderDesigns() {
-      designGridEl.innerHTML = DESIGNS.map(d => `
-        <figure class="rounded-2xl overflow-hidden border border-slate-200 bg-white">
-          <img src="${d.img}" alt="" class="w-full h-64 object-cover" />
-          <figcaption class="p-3 text-sm text-slate-700">${d.title}</figcaption>
-        </figure>
-      `).join('');
-    }
-
-    function initSearch() {
-      searchInputEl.addEventListener('input', (e) => {
-        query = e.target.value.trim();
-        renderProjects();
-      });
-    }
-
-    function initContactForm() {
-      const form = document.getElementById('contactForm');
-      form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const data = new FormData(form);
-        const name = data.get('name');
-        const email = data.get('email');
-        const topic = data.get('topic');
-        const message = data.get('message');
-        const subject = encodeURIComponent(`Inquiry from ${name || 'Website Visitor'}`);
-        const body = encodeURIComponent(`Hello Zhenai,\n\n${message || "I'd like to work with you."}\n\n— ${name || ''}\n${email ? `Email: ${email}` : ''}\n${topic ? `Topic: ${topic}` : ''}`);
-        window.location.href = `mailto:communications@zhenaixiao.com?subject=${subject}&body=${body}`;
-      });
-    }
-
-    // ---- Init ----
+    // Init
+    const savedLang = localStorage.getItem('zx-lang') || 'en';
+    setLang(savedLang);
     document.getElementById('year').textContent = new Date().getFullYear();
-    renderCategoryButtons();
-    renderProjects();
-    renderDesigns();
-    initSearch();
-    initContactForm();
   </script>
 </body>
 </html>
