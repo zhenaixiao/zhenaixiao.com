@@ -4,63 +4,65 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Zhenai Xiao — Coming Soon</title>
-  <meta name="description" content="Zhenai Xiao — Communications & PR Specialist. Bilingual coming‑soon page with a professional animated oval aura and subtle motion element." />
+  <meta name="description" content="Zhenai Xiao — Communications & PR Specialist. Bilingual coming‑soon page with an animated background aura." />
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Montserrat only -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+  <!-- Inter (clean, modern) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
   <style>
-    :root{ --aura: 221 83% 53%; /* Tailwind blue-500 as HSL (H S% L%) */ }
+    :root{ --aura: 221 83% 48%; /* slightly darker blue */ }
     html { scroll-behavior: smooth; }
-    body { font-family: "Montserrat", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif; }
+    body {
+      font-family: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+                   "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+    }
 
-    /* ===== Aura (elliptical radial gradient) ===== */
-    .aura { position: absolute; inset: 0; pointer-events: none; filter: saturate(110%); }
-    .aura::before {
-      content: ""; position: absolute; inset: -15%;
+    /* ===== PAGE BACKGROUND AURA (outside the card) ===== */
+    .aura-global { position: fixed; inset: 0; pointer-events: none; z-index: 0; filter: saturate(110%); }
+    .aura-global::before {
+      content: ""; position: absolute; left: 50%; top: 40%;
+      width: 140vmax; height: 80vmax; /* wide oval */
       background: radial-gradient(ellipse at center,
-        hsl(var(--aura) / 0.20) 0%,
-        hsl(var(--aura) / 0.14) 20%,
-        hsl(var(--aura) / 0.08) 40%,
-        transparent 65%);
-      filter: blur(28px);
-      transform: scaleX(1.9) scaleY(0.85);
-      animation: auraPulse 9s ease-in-out infinite;
+        hsl(var(--aura) / 0.18) 0%,
+        hsl(var(--aura) / 0.14) 25%,
+        hsl(var(--aura) / 0.09) 45%,
+        transparent 70%);
+      filter: blur(36px);
+      animation: auraPulse 10s ease-in-out infinite;
+      transform: translate(calc(-50% - 8px), calc(-50% - 2px)) scaleX(1.78) scaleY(0.84);
     }
-
     @keyframes auraPulse {
-      0%, 100% { opacity: .75; transform: scaleX(1.75) scaleY(0.82); }
-      50%      { opacity: .95; transform: scaleX(2.05) scaleY(0.90); }
+      0%, 100% { opacity: .80; transform: translate(calc(-50% - 10px), calc(-50% - 2px)) scaleX(1.72) scaleY(0.82); }
+      50%      { opacity: .98; transform: translate(calc(-50% + 14px), calc(-50% + 6px)) scaleX(2.06) scaleY(0.92); }
     }
-
-    /* ===== Subtle orbital highlight (second motion element) ===== */
-     50% { transform: translateY(calc(-50% + 6px)); } } }
-
-    /* Reduce motion for accessibility */
-    @media (prefers-reduced-motion: reduce) {
-      .aura::before { animation: none !important; }
-    }
+    @media (prefers-reduced-motion: reduce) { .aura-global::before { animation: none !important; } }
 
     /* Utility: soft divider line */
     .divider { height:1px; background: linear-gradient(90deg, transparent, rgba(15,23,42,.08), transparent); }
+      @keyframes pulseDot{0%{transform:scale(1);opacity:.9}70%{transform:scale(1.8);opacity:.35}100%{transform:scale(2.1);opacity:0}}
+  </style>
+  <style>
+    /* Dot color tied to the aura's darkest blue */
+    .dot { position: relative; display: inline-flex; height: 0.625rem; width: 0.625rem; }
+    .dot-ping { position: absolute; display: inline-flex; height: 0.625rem; width: 0.625rem; border-radius: 9999px; background: hsl(var(--aura) / 0.40); animation: pulseDot 1.6s ease-out infinite; }
+    .dot-base { position: relative; display: inline-flex; height: 0.625rem; width: 0.625rem; border-radius: 9999px; background: radial-gradient(circle at 35% 35%, hsl(var(--aura) / 0.80) 0%, hsl(var(--aura) / 0.55) 55%, hsl(var(--aura) / 0.30) 100%); box-shadow: inset 0 0 0 1px hsl(var(--aura) / 0.22), 0 0 10px hsl(var(--aura) / 0.10); }
   </style>
 </head>
 <body class="min-h-screen bg-gradient-to-b from-white via-slate-50 to-white text-slate-900">
-  <main class="min-h-screen grid place-items-center px-6 py-10">
+  <!-- BACKGROUND AURA LAYER -->
+  <div class="aura-global" aria-hidden="true"></div>
+
+  <main class="relative z-10 min-h-screen grid place-items-center px-6 py-10">
     <div class="w-full max-w-3xl">
       <!-- Language toggle -->
-      <div class="flex items-center justify-center gap-2 mb-6">
+      <div class="flex items-center justify-center gap-2 mb-8">
         <button id="btn-en" class="px-3 py-1.5 text-sm rounded-full border border-slate-300 bg-white">English</button>
         <button id="btn-fr" class="px-3 py-1.5 text-sm rounded-full border border-slate-300 bg-white">Français</button>
       </div>
 
-      <!-- Card with animated aura -->
-      <div class="relative isolate overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm p-10">
-        <!-- Animated background layers -->
-        <div class="aura" aria-hidden="true"></div>
-        </div>
-
+      <!-- Card (no internal animations) -->
+      <div class="text-center rounded-3xl border border-slate-200 bg-white/95 backdrop-blur-sm shadow-sm p-10">
         <!-- EN -->
         <section id="en" class="space-y-4 text-center">
           <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight">Zhenai Xiao</h1>
@@ -68,9 +70,9 @@
           <div class="divider mx-auto my-4 w-32"></div>
           <div class="inline-flex items-center gap-2 text-slate-600 justify-center">
             <span>Coming&nbsp;soon…</span>
-            <span class="relative inline-flex h-2.5 w-2.5">
-              <span class="absolute inline-flex h-2.5 w-2.5 rounded-full bg-slate-400 opacity-75 animate-ping"></span>
-              <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-slate-500"></span>
+            <span class="dot">
+              <span class="dot-ping"></span>
+              <span class="dot-base"></span>
             </span>
           </div>
           <div class="pt-4 text-sm text-slate-500">Contact: <a class="underline" href="mailto:communications@zhenaixiao.com">communications@zhenaixiao.com</a></div>
@@ -83,9 +85,9 @@
           <div class="divider mx-auto my-4 w-32"></div>
           <div class="inline-flex items-center gap-2 text-slate-600 justify-center">
             <span>Site en création…</span>
-            <span class="relative inline-flex h-2.5 w-2.5">
-              <span class="absolute inline-flex h-2.5 w-2.5 rounded-full bg-slate-400 opacity-75 animate-ping"></span>
-              <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-slate-500"></span>
+            <span class="dot">
+              <span class="dot-ping"></span>
+              <span class="dot-base"></span>
             </span>
           </div>
           <div class="pt-4 text-sm text-slate-500">Contact&nbsp;: <a class="underline" href="mailto:communications@zhenaixiao.com">communications@zhenaixiao.com</a></div>
@@ -102,6 +104,7 @@
     const fr = document.getElementById('fr');
     const btnEn = document.getElementById('btn-en');
     const btnFr = document.getElementById('btn-fr');
+
     function setLang(lang){
       if(lang === 'fr'){
         en.classList.add('hidden'); fr.classList.remove('hidden');
