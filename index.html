@@ -9,7 +9,7 @@
   <style>
     :root {
       --red: #f0040e;
-      --deep-red: #a8000c;
+      --deep-red: #870009;
       --bg: #f4f0eb;
       --panel-dark: #0f0f10;
       --panel-light: #f7f3ef;
@@ -39,7 +39,7 @@
       box-shadow: 0 12px 40px rgba(0,0,0,.06);
     }
     .top-red {
-      min-height: 59vh;
+      min-height: 63vh;
       position: relative;
       overflow: hidden;
       background: linear-gradient(135deg, var(--red) 0%, #ff3510 100%);
@@ -48,20 +48,20 @@
     .top-red::after {
       content: "";
       position: absolute;
-      right: 10%;
-      top: 16%;
-      width: 360px;
-      height: 360px;
+      right: 8%;
+      top: 12%;
+      width: 420px;
+      height: 420px;
       border-radius: 9999px;
-      background: radial-gradient(circle, rgba(168,0,12,.34) 0%, rgba(168,0,12,.16) 34%, rgba(168,0,12,0) 68%);
-      filter: blur(14px);
-      opacity: .95;
-      animation: auraPulse 5.8s ease-in-out infinite;
+      background: radial-gradient(circle, rgba(135,0,9,.48) 0%, rgba(135,0,9,.22) 34%, rgba(135,0,9,0) 70%);
+      filter: blur(18px);
+      opacity: .98;
+      animation: auraPulse 4.4s ease-in-out infinite;
       pointer-events: none;
     }
     @keyframes auraPulse {
-      0%,100% { transform: scale(0.92); opacity: .64; }
-      50% { transform: scale(1.08); opacity: .98; }
+      0%,100% { transform: scale(0.88); opacity: .62; }
+      50% { transform: scale(1.14); opacity: 1; }
     }
     .bottom-split {
       display: grid;
@@ -101,12 +101,26 @@
       line-height: 1.02;
       letter-spacing: -.03em;
     }
-    .field-sub {
-      margin-top: 6px;
+    .field-list {
+      margin-top: 10px;
+      padding-left: 0;
+      list-style: none;
       font-size: 13px;
       line-height: 1.8;
       color: rgba(20,20,20,.60);
-      max-width: 30ch;
+      max-width: 32ch;
+    }
+    .field-list li {
+      position: relative;
+      padding-left: 14px;
+      margin-bottom: 2px;
+    }
+    .field-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: rgba(20,20,20,.50);
     }
     .contact-link {
       border-top: 1px solid rgba(255,255,255,.08);
@@ -133,7 +147,7 @@
       display: grid;
       grid-template-columns: 1fr 2fr;
       gap: 22px;
-      align-items: start;
+      align-items: center;
     }
     .photo-box {
       width: 100%;
@@ -160,13 +174,13 @@
     @media (max-width: 640px) {
       .shell { padding: 12px; }
       .frame { min-height: calc(100vh - 24px); border-radius: 22px; }
-      .top-red { min-height: 52vh; }
-      .about-grid { grid-template-columns: 1fr; }
+      .top-red { min-height: 56vh; }
+      .about-grid { grid-template-columns: 1fr; align-items: start; }
       .top-red::after {
-        width: 240px;
-        height: 240px;
-        right: 6%;
-        top: 18%;
+        width: 260px;
+        height: 260px;
+        right: 4%;
+        top: 16%;
       }
     }
   </style>
@@ -180,7 +194,7 @@
         </div>
 
         <div class="relative z-10 max-w-4xl pt-12 md:pt-20 lg:pt-28">
-          <h1 class="headline-font max-w-4xl text-[28px] leading-[1.10] tracking-[-0.004em] md:text-[40px] lg:text-[44px]">
+          <h1 class="headline-font max-w-4xl text-[28px] leading-[1.14] tracking-[0.008em] md:text-[40px] lg:text-[44px]">
             We help ambitious businesses<br>
             communicate with clarity<br>
             to grow with impact.
@@ -200,28 +214,44 @@
               <div class="field-no">01</div>
               <div>
                 <div class="field-title">Communications</div>
-                <div class="field-sub">Strategic messaging · Content creation · Social media management</div>
+                <ul class="field-list">
+                  <li>Strategic messaging</li>
+                  <li>Content creation</li>
+                  <li>Social media management</li>
+                </ul>
               </div>
             </div>
             <div class="field-card">
               <div class="field-no">02</div>
               <div>
                 <div class="field-title">Brand Strategy</div>
-                <div class="field-sub">Market research · Brand identity creation · Verbal & visual identity</div>
+                <ul class="field-list">
+                  <li>Market research</li>
+                  <li>Brand identity creation</li>
+                  <li>Verbal & visual identity</li>
+                </ul>
               </div>
             </div>
             <div class="field-card">
               <div class="field-no">03</div>
               <div>
                 <div class="field-title">Public Relations</div>
-                <div class="field-sub">Government relations · Stakeholder engagement · Strategic partnerships</div>
+                <ul class="field-list">
+                  <li>Government relations</li>
+                  <li>Stakeholder engagement</li>
+                  <li>Strategic partnerships</li>
+                </ul>
               </div>
             </div>
             <div class="field-card">
               <div class="field-no">04</div>
               <div>
                 <div class="field-title">Supply &amp; Sourcing</div>
-                <div class="field-sub">Solutions advisory · Supplier recommendations · Sourcing support</div>
+                <ul class="field-list">
+                  <li>Solutions advisory</li>
+                  <li>Supplier recommendations</li>
+                  <li>Sourcing support</li>
+                </ul>
               </div>
             </div>
           </div>
