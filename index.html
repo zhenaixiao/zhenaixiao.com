@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Zhenai Xiao</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
       --red: #f0040e;
@@ -27,7 +27,11 @@
       color: var(--text-dark);
     }
     .headline-font { font-family: 'DM Serif Display', serif; }
-    .name-font { font-family: 'The Seasons', 'Cormorant Garamond', 'DM Serif Display', serif; }
+    .name-font {
+      font-family: 'Manrope', 'Inter', system-ui, sans-serif;
+      font-weight: 800;
+      letter-spacing: -0.045em;
+    }
     .shell {
       min-height: 100vh;
       padding: 18px;
@@ -63,6 +67,79 @@
       color: var(--text-light);
     }
     .mini { letter-spacing: .18em; text-transform: uppercase; font-size: 11px; }
+
+    /* headline motion accents */
+    .motion-inline {
+      display: inline-flex;
+      width: 24px;
+      height: 16px;
+      margin: 0 .10em;
+      vertical-align: baseline;
+      position: relative;
+      top: -0.02em;
+    }
+    .motion-inline.grow {
+      width: 26px;
+      height: 18px;
+      margin-right: .14em;
+      margin-left: -.02em;
+    }
+    .chevrons {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+    .chevrons span {
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 8px;
+      height: 16px;
+      background: #1a0a0a;
+      clip-path: polygon(0 0, 100% 50%, 0 100%, 30% 50%);
+      animation: shiftArrow 1.35s ease-in-out infinite;
+      opacity: .95;
+    }
+    .chevrons span:nth-child(2) { left: 6px; animation-delay: .12s; }
+    .chevrons span:nth-child(3) { left: 12px; animation-delay: .24s; }
+    @keyframes shiftArrow {
+      0%,100% { transform: translateX(0); opacity: .55; }
+      50% { transform: translateX(2px); opacity: 1; }
+    }
+    .growmark {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: inline-block;
+      animation: riseMark 1.7s ease-in-out infinite;
+    }
+    .growmark::before,
+    .growmark::after {
+      content: "";
+      position: absolute;
+      background: #1a0a0a;
+      border-radius: 999px;
+    }
+    .growmark::before {
+      left: 2px;
+      bottom: 3px;
+      width: 16px;
+      height: 2.5px;
+      transform: rotate(-28deg);
+      transform-origin: left center;
+    }
+    .growmark::after {
+      right: 1px;
+      top: 2px;
+      width: 7px;
+      height: 2.5px;
+      transform: rotate(45deg);
+      box-shadow: -2px 2px 0 0 #1a0a0a;
+    }
+    @keyframes riseMark {
+      0%,100% { transform: translateY(0); opacity: .75; }
+      50% { transform: translateY(-1px); opacity: 1; }
+    }
+
     .field-card {
       display: grid;
       grid-template-columns: auto 1fr;
@@ -119,6 +196,8 @@
       border-radius: 18px;
       object-fit: cover;
       border: 1px solid rgba(255,255,255,.08);
+      display: block;
+      background: rgba(255,255,255,.04);
     }
     @media (max-width: 980px) {
       .bottom-split { grid-template-columns: 1fr; }
@@ -132,6 +211,8 @@
       .top-red { min-height: 46vh; }
       .about-grid { grid-template-columns: 1fr; }
       .photo { width: 110px; }
+      .motion-inline { width: 18px; height: 12px; }
+      .motion-inline.grow { width: 20px; height: 14px; }
     }
   </style>
 </head>
@@ -141,15 +222,17 @@
       <!-- TOP RED HERO -->
       <div class="top-red flex flex-col justify-between px-6 py-7 md:px-10 md:py-9 lg:px-14 lg:py-12">
         <div>
-          <div class="name-font text-[32px] leading-none tracking-[-0.03em] md:text-[40px] lg:text-[48px]">Zhenai Xiao</div>
+          <div class="name-font text-[28px] leading-none md:text-[34px] lg:text-[38px]">Zhenai Xiao</div>
         </div>
 
         <div class="max-w-4xl pt-12 md:pt-20 lg:pt-28">
-          <h1 class="headline-font max-w-4xl text-[34px] leading-[1.02] tracking-[-0.04em] md:text-[50px] lg:text-[58px]">
-            We help ambitious businesses communicate with clarity to grow with impact.
+          <h1 class="headline-font max-w-4xl text-[28px] leading-[1.04] tracking-[-0.04em] md:text-[42px] lg:text-[46px]">
+            We help <span class="motion-inline"><span class="chevrons"><span></span><span></span><span></span></span></span> ambitious businesses<br>
+            communicate with clarity<br>
+            to <span class="motion-inline grow"><span class="growmark"></span></span> grow with impact.
           </h1>
           <p class="mt-4 max-w-3xl text-[15px] leading-7 text-black/72 md:text-[17px] md:leading-8">
-            We help businesses refine how they communicate, strengthen how they are perceived, and access the right solutions to grow.
+            We help businesses refine how they communicate, strengthen how they are perceived, and deliver stronger results with impact.
           </p>
         </div>
       </div>
@@ -185,7 +268,7 @@
               <div class="field-no">04</div>
               <div>
                 <div class="field-title">Supply &amp; Sourcing</div>
-                <div class="field-sub">Solutions, sourcing, and opportunity support.</div>
+                <div class="field-sub">Solutions, sourcing, and results support.</div>
               </div>
             </div>
           </div>
@@ -196,10 +279,10 @@
           <div>
             <div class="mini text-white/38">About</div>
             <div class="about-grid mt-5">
-              <img class="photo" src="data:image/jpeg;base64,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" alt="Zhenai Xiao" />
+              <img class="photo" src="/mnt/data/AE03ECE6-BCA9-467D-8DE5-600D3D581FE5.jpeg" alt="Zhenai Xiao" onerror="this.style.display='none'" />
               <div>
                 <p class="max-w-2xl text-sm leading-7 text-white/72 md:text-[15px] md:leading-8">
-                  I’m Zhenai Xiao, a consultant working across communications, branding, public relations, and supply solutions. I help businesses refine their positioning, communicate more effectively, and move opportunities forward with greater clarity and impact.
+                  I’m Zhenai Xiao, a consultant working across communications, branding, public relations, and supply solutions. I help businesses refine their positioning, communicate more effectively, and deliver stronger results with greater clarity and impact.
                 </p>
               </div>
             </div>
