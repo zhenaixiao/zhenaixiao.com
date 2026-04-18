@@ -42,11 +42,28 @@
     }
     .top-red {
       min-height: 54vh;
-      background:
-        radial-gradient(circle at 78% 44%, rgba(255,255,255,.13), transparent 24%),
-        radial-gradient(circle at 74% 52%, rgba(255,255,255,.08), transparent 18%),
-        linear-gradient(135deg, var(--red) 0%, #ff3510 100%);
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--red) 0%, #ff3510 100%);
       color: #170808;
+    }
+    .top-red::after {
+      content: "";
+      position: absolute;
+      right: 12%;
+      top: 18%;
+      width: 340px;
+      height: 340px;
+      border-radius: 9999px;
+      background: radial-gradient(circle, rgba(255,255,255,.18) 0%, rgba(255,255,255,.08) 32%, rgba(255,255,255,0) 68%);
+      filter: blur(10px);
+      opacity: .9;
+      animation: auraPulse 7s ease-in-out infinite;
+      pointer-events: none;
+    }
+    @keyframes auraPulse {
+      0%,100% { transform: scale(0.96); opacity: .72; }
+      50% { transform: scale(1.06); opacity: .95; }
     }
     .bottom-split {
       display: grid;
@@ -133,8 +150,8 @@
           <div class="name-font text-[30px] leading-none md:text-[36px] lg:text-[40px]">Zhenai Xiao</div>
         </div>
 
-        <div class="max-w-4xl pt-12 md:pt-20 lg:pt-28">
-          <h1 class="headline-font max-w-4xl text-[28px] leading-[1.04] tracking-[-0.025em] md:text-[40px] lg:text-[44px]">
+        <div class="relative z-10 max-w-4xl pt-12 md:pt-20 lg:pt-28">
+          <h1 class="headline-font max-w-4xl text-[28px] leading-[1.04] tracking-[-0.012em] md:text-[40px] lg:text-[44px]">
             We help ambitious businesses<br>
             communicate with clarity<br>
             to grow with impact.
@@ -156,28 +173,28 @@
               <div class="field-no">01</div>
               <div>
                 <div class="field-title">Communications</div>
-                <div class="field-sub">Messaging, strategy, structure, and clarity.</div>
+                <div class="field-sub text-[13px]">Script & message crafting, social media management, content creation.</div>
               </div>
             </div>
             <div class="field-card">
               <div class="field-no">02</div>
               <div>
                 <div class="field-title">Brand Strategy</div>
-                <div class="field-sub">Positioning, identity, and perception.</div>
+                <div class="field-sub text-[13px]">Market research, brand identity creation, messaging & graphic charter.</div>
               </div>
             </div>
             <div class="field-card">
               <div class="field-no">03</div>
               <div>
                 <div class="field-title">Public Relations</div>
-                <div class="field-sub">Visibility, reputation, and influence.</div>
+                <div class="field-sub text-[13px]">Government relations, client & stakeholder management, collaboration expansion.</div>
               </div>
             </div>
             <div class="field-card">
               <div class="field-no">04</div>
               <div>
                 <div class="field-title">Supply &amp; Sourcing</div>
-                <div class="field-sub">Solutions, sourcing, and results support.</div>
+                <div class="field-sub text-[13px]">Solutions advising, supply recommendations, sourcing support.</div>
               </div>
             </div>
           </div>
@@ -188,7 +205,7 @@
           <div>
             <div class="mini text-white/38">About</div>
             <div class="about-grid mt-5">
-              <img class="w-[110px] h-[110px] rounded-[16px] object-cover border border-white/10 mb-5" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoHBwgHBgoICAkLCgkLDhgQDg0NDh0VFhEYIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQ0NDg0NDisZFRkrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIAUABQAMBIgACEQEDEQH/xAAbAAEAAgMBAQAAAAAAAAAAAAAABQYBBAcDAv/EAD4QAAIBAgQDBgQEBgIDAAAAAAECAwQRAAUSITFBBhMiUWFxgZEUMqGxQlLR8AcjYnKS4RUzQ1OCorL/xAAaAQADAQEBAQAAAAAAAAAAAAABAgMABAUH/8QALBEAAgICAgICAQQCAwAAAAAAAAECEQMhEjFBEyJRMmFxFCNCgaGxwf/aAAwDAQACEQMRAD8A6GIpSkpQpKSlClKSgUkqVJQkqKpV4tqg6m2R8Yj5pKvV0LLa1d1oWw1k7j7O6hH3F8b5P8AM1Fz+2m4x7Q4y3Y4f6aJpKq0h2W1s7mO6s0Z3f1lL+YdW3Z8o1bH4Yl7fXQJYk49q1+1vVdY1a6vW3p4QxCjcMABxnY+lS4qS8D0vW0kLxvN4f4IYySx4wqZ2x6mlym3U5t7f7F8r8f4n2g9P6f1lWl3iC2bLrN1y6Yx1GdM0v6Wm1g7LrW1j1fV9H8rJ6e3K5mQq7fUnJrjI2M9jX0p0t0rWvWfV1e4y2o4m4n8m5r2o7d0k1v7aN8k8mN8m1f4i8j1l1Gf8Ai4m1T+o3m3q2R2fV7hWwq4YwP1J7U0uJzvH0r7V2G3cL0e6O8W+N6f7t3Y6Z9T0q8mYv8A1M7a2o8vVtX7f7r7T8T8a9P1o6xW6w9v0t9n2z8o0mCkqSlKQpKSkKUpKQpSkoCpKSpKlKSgKUpKQpSkoClKSkKUpKApSkpClKSgKUpKQpSkoClKSkKUpKApSkpClKSgKUpKQpSkoClKSkKUpKApSkpClKSgKUpKQpSkoClKSkKUpKApSkpClKSgKUpKQpSkoClKSkKUpKApSkpClKSgKUpKQpSkoClKSkKUpKArh3mQv1w7V8v4q8Yv6mX2bX2r7mZ7b8xq4+7F4+0q2f2r9T8b5m5t2r7dV5f3V7e4x5w7l2wZB3A5yPpWv4n6d2r7r7w8v8AD7Uu6+Vf1l7W7b2m1i3V2mP4fN1P1Tq2f1lW9v7v8AX1i1n7y8j2uP0o+8s3w6z6q7cWm6z0fVfVtJ6V7Qv0q6k+3Z8b4r8l7nVf7XWn6fWz7S8jJx2xn9a7t6f1b7W7S3S9j7G5m5f8Aw9p0g8W2jv6c4o1/8Ag4P9P8A7hV+V9n7o4v7Hqz7V9H1j7i7e4u3f8AUX3qf8AFx8U8dWbS0t1l1l9n0v7r7m0b2m+J7o9a9D6v8A2b8n1+7v3V2n1fW7V6Gx6i3dT0qv3M9n2+3m8x7l8q1f7b9l9S7L4f8Aa9X4z+T+Vn2m7r7o7V7aP1k9m8H0l2f1b7a8p1+9m7V8T8q1ePz7x9KX8T8j8v8Arf1G8v8A1rX7x8r8j6h8q+N7b0+8r0vYVw1hVYVYVYVYVYVYVYVYVYVYVYVYVYVYVYVYVYVYVYVYVYVYVYVYVYVYVYVYVYVf/Z" alt="Zhenai Xiao" />
+              <div class="w-[110px] h-[110px] rounded-[16px] border border-white/10 bg-white/[0.03] flex items-center justify-center text-white/32 text-xs uppercase tracking-[0.18em] mb-5">Photo</div>
               <div>
                 <p class="max-w-2xl text-sm leading-7 text-white/72 md:text-[15px] md:leading-8">
                   I’m Zhenai Xiao, a consultant working across communications, branding, public relations, and supply solutions. I help businesses refine their positioning, communicate more effectively, and deliver stronger results with greater clarity and impact.
