@@ -5,18 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Zhenai Xiao</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --red: #f0040e;
       --red-deep: #d9040d;
       --bg: #f4f0eb;
-      --panel: #111111;
-      --text-dark: #121212;
-      --text-light: #f8f7f4;
-      --muted-dark: rgba(18,18,18,.72);
-      --muted-light: rgba(248,247,244,.74);
-      --line: rgba(0,0,0,.08);
+      --panel-dark: #0f0f10;
+      --panel-light: #f7f3ef;
+      --text-dark: #141414;
+      --text-light: #f6f5f1;
+      --muted-dark: rgba(20,20,20,.70);
+      --muted-light: rgba(246,245,241,.74);
+      --line-dark: rgba(20,20,20,.10);
+      --line-light: rgba(255,255,255,.10);
     }
     html { scroll-behavior: smooth; }
     body {
@@ -25,6 +27,7 @@
       color: var(--text-dark);
     }
     .headline-font { font-family: 'DM Serif Display', serif; }
+    .name-font { font-family: 'The Seasons', 'Cormorant Garamond', 'DM Serif Display', serif; }
     .shell {
       min-height: 100vh;
       padding: 18px;
@@ -38,31 +41,57 @@
       box-shadow: 0 12px 40px rgba(0,0,0,.06);
     }
     .top-red {
+      min-height: 54vh;
       background:
-        radial-gradient(circle at 70% 38%, rgba(255,255,255,.12), transparent 26%),
-        radial-gradient(circle at 78% 45%, rgba(255,255,255,.09), transparent 18%),
-        linear-gradient(135deg, var(--red) 0%, #ff3b12 100%);
-      color: #150707;
+        radial-gradient(circle at 78% 44%, rgba(255,255,255,.13), transparent 24%),
+        radial-gradient(circle at 74% 52%, rgba(255,255,255,.08), transparent 18%),
+        linear-gradient(135deg, var(--red) 0%, #ff3510 100%);
+      color: #170808;
     }
-    .bottom-panel {
-      background: #0d0d0d;
-      color: var(--text-light);
+    .bottom-split {
+      display: grid;
+      grid-template-columns: 0.78fr 1.22fr;
+      flex: 1;
     }
     .fields-col {
-      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
-      border-right: 1px solid rgba(255,255,255,.08);
+      background: var(--panel-light);
+      color: var(--text-dark);
+      border-right: 1px solid var(--line-dark);
     }
     .about-col {
-      background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.00));
+      background: var(--panel-dark);
+      color: var(--text-light);
     }
-    .label {
-      display: inline-flex;
-      align-items: center;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.03);
-      color: rgba(248,247,244,.86);
-      border-radius: 9999px;
-      padding: 10px 16px;
+    .mini { letter-spacing: .18em; text-transform: uppercase; font-size: 11px; }
+    .field-card {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 16px;
+      align-items: start;
+      padding: 18px 0;
+      border-top: 1px solid rgba(0,0,0,.08);
+    }
+    .field-card:last-child { border-bottom: 1px solid rgba(0,0,0,.08); }
+    .field-no {
+      font-size: 11px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: rgba(20,20,20,.38);
+      padding-top: 6px;
+      min-width: 34px;
+    }
+    .field-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(24px, 2.3vw, 34px);
+      line-height: 1.02;
+      letter-spacing: -.03em;
+    }
+    .field-sub {
+      margin-top: 6px;
+      font-size: 14px;
+      line-height: 1.65;
+      color: rgba(20,20,20,.58);
+      max-width: 26ch;
     }
     .contact-link {
       border-top: 1px solid rgba(255,255,255,.08);
@@ -72,10 +101,37 @@
       background: rgba(255,255,255,.03);
       color: white;
     }
-    .mini { letter-spacing: .18em; text-transform: uppercase; font-size: 11px; }
-    @media (max-width: 900px) {
-      .split { grid-template-columns: 1fr !important; }
-      .fields-col { border-right: 0; border-bottom: 1px solid rgba(255,255,255,.08); }
+    .contact-wrap {
+      overflow: hidden;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.02);
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+    .photo {
+      width: 140px;
+      aspect-ratio: 1 / 1;
+      border-radius: 18px;
+      object-fit: cover;
+      border: 1px solid rgba(255,255,255,.08);
+    }
+    @media (max-width: 980px) {
+      .bottom-split { grid-template-columns: 1fr; }
+      .fields-col { border-right: 0; border-bottom: 1px solid var(--line-dark); }
+      .about-grid { grid-template-columns: 96px 1fr; gap: 18px; }
+      .photo { width: 96px; border-radius: 14px; }
+    }
+    @media (max-width: 640px) {
+      .shell { padding: 12px; }
+      .frame { min-height: calc(100vh - 24px); border-radius: 22px; }
+      .top-red { min-height: 46vh; }
+      .about-grid { grid-template-columns: 1fr; }
+      .photo { width: 110px; }
     }
   </style>
 </head>
@@ -83,35 +139,55 @@
   <main class="shell">
     <section class="frame flex flex-col">
       <!-- TOP RED HERO -->
-      <div class="top-red px-6 py-8 md:px-10 md:py-10 lg:px-14 lg:py-12">
-        <div class="mb-8 flex items-start justify-between gap-4">
-          <div>
-            <div class="headline-font text-3xl md:text-4xl lg:text-5xl">Zhenai Xiao</div>
-            <div class="mt-2 text-sm md:text-[15px] text-black/70">Communications & PR Consultant</div>
-          </div>
-          <div class="mini hidden md:block text-black/50">Preview concept</div>
+      <div class="top-red flex flex-col justify-between px-6 py-7 md:px-10 md:py-9 lg:px-14 lg:py-12">
+        <div>
+          <div class="name-font text-[32px] leading-none tracking-[-0.03em] md:text-[40px] lg:text-[48px]">Zhenai Xiao</div>
         </div>
 
-        <div class="max-w-5xl">
-          <h1 class="headline-font text-4xl leading-[1.03] tracking-[-0.04em] md:text-6xl lg:text-[78px]">
+        <div class="max-w-4xl pt-12 md:pt-20 lg:pt-28">
+          <h1 class="headline-font max-w-4xl text-[34px] leading-[1.02] tracking-[-0.04em] md:text-[50px] lg:text-[58px]">
             We help ambitious businesses communicate with clarity to grow with impact.
           </h1>
-          <p class="mt-5 max-w-3xl text-base leading-7 text-black/72 md:text-lg md:leading-8">
+          <p class="mt-4 max-w-3xl text-[15px] leading-7 text-black/72 md:text-[17px] md:leading-8">
             We help businesses refine how they communicate, strengthen how they are perceived, and access the right solutions to grow.
           </p>
         </div>
       </div>
 
       <!-- BOTTOM SPLIT -->
-      <div class="bottom-panel grid flex-1 split grid-cols-[0.9fr_1.1fr]">
+      <div class="bottom-split">
         <!-- LEFT: FIELDS -->
-        <div class="fields-col px-6 py-8 md:px-10 md:py-10 lg:px-14 lg:py-12">
-          <div class="mini text-white/38">Fields</div>
-          <div class="mt-6 flex flex-col gap-3 text-base md:text-lg">
-            <div class="label w-fit">Communications</div>
-            <div class="label w-fit">Brand Strategy</div>
-            <div class="label w-fit">Public Relations</div>
-            <div class="label w-fit">Supply &amp; Sourcing</div>
+        <div class="fields-col px-6 py-8 md:px-9 md:py-10 lg:px-12 lg:py-12">
+          <div class="mini text-black/40">Fields</div>
+          <div class="mt-5">
+            <div class="field-card">
+              <div class="field-no">01</div>
+              <div>
+                <div class="field-title">Communications</div>
+                <div class="field-sub">Messaging, strategy, structure, and clarity.</div>
+              </div>
+            </div>
+            <div class="field-card">
+              <div class="field-no">02</div>
+              <div>
+                <div class="field-title">Brand Strategy</div>
+                <div class="field-sub">Positioning, identity, and perception.</div>
+              </div>
+            </div>
+            <div class="field-card">
+              <div class="field-no">03</div>
+              <div>
+                <div class="field-title">Public Relations</div>
+                <div class="field-sub">Visibility, reputation, and influence.</div>
+              </div>
+            </div>
+            <div class="field-card">
+              <div class="field-no">04</div>
+              <div>
+                <div class="field-title">Supply &amp; Sourcing</div>
+                <div class="field-sub">Solutions, sourcing, and opportunity support.</div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -119,14 +195,19 @@
         <div class="about-col flex flex-col justify-between px-6 py-8 md:px-10 md:py-10 lg:px-14 lg:py-12">
           <div>
             <div class="mini text-white/38">About</div>
-            <p class="mt-6 max-w-2xl text-sm leading-7 text-white/72 md:text-[15px] md:leading-8">
-              I’m Zhenai Xiao, a consultant working across communications, branding, public relations, and supply solutions. I help businesses refine their positioning, communicate more effectively, and move opportunities forward with greater clarity and impact.
-            </p>
+            <div class="about-grid mt-5">
+              <img class="photo" src="data:image/jpeg;base64,/9j/4QOcRXhpZgAATU0AKgAAAAgACAESAAMAAAABAAEAAAEaAAUAAAABAAAAbgEbAAUAAAABAAAAdgEoAAMAAAABAAIAAAExAAIAAAATAAAAfgEyAAIAAAAUAAAAkgITAAMAAAABAAEAAIdpAAQAAAABAAAApgAAAAAAAABIAAAAAQAAAEgAAAABTWVpdHUtaU9TLTEwAAAAAAjodpAAAgAAABQAAADESJb3pAKgAQADAAAAAQAAAAABoAMAAQAAAABAAAC2BoAQAAQAAAABAAAAtqgAgAEAAAAAQAAAtugAwAEAAAAAQAAAtoAAAAA/+0AOFBob3Rvc2hvcCAzLjAAOEJJTQQHAAAAAAAQAyYQqQeQQgD2ggQ0QmQYjkQJ/9sAQwACAQEBAQECAQEBAgICAgIDAgICAwMDAwMDAwMDAwQEBAQEBQQFBQUFBQUGBgYGBgYGBgoKCgoKCgwMDAwMDAwMDAz/2wBDAQICAgMDAwMDBAQEBAQMBQUFBQUGBwcGBgYGBggICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgMDAwMDAwP/wAARCALaAtoDASIAAhEBAxEB/8QAHQAAAgIDAQEBAAAAAAAAAAAABQYDBAcCAQgBCf/EAFQQAAEDAgMFBQYEAwYFAwMFAQECAwQABREGEiExQQcTIlFhcYGRMqGx0UJSYnKSscHR8BUjQ3OCorLhQ1ODJENTo8MkVHSj8TR0/8QAGQEAAgMBAAAAAAAAAAAAAAAAAQIAAwQF/8QAKBEAAgICAgICAgICAwAAAAAAAAECEQMhEjEEQRMiURQyQmFxgf/aAAwDAQACEQMRAD8A7M1U2kG9E9rS9bqP2mmv2ttn8G3P6r5Jm1P1z2hJ5jQ+v0gr5Q9K9S5l8vU4r5v8A1Kk+W1cVj0fajWtx6k7bG4V5b8wU3Vd2m6Lq3P8A1M4kQ8A4xjHjI3Z7lq2xS8N1q3Kz5k2k0Dk9P4l0t6C3zJ4j7v2r8VfG1y9d5vK8GfKlm5dZ6lWQ9lE7bV7mczL2G9b5fV7dJ1fHjtxQ4pZ9k8qU8m0l3FjR8H1H5Hqk7G8P8AN1dP9a5T3vV+Yd7rKXx1hE7q2bQeV8s2r6Y+uG4V2Q9m0r7c2aP2Zk8G8yq9A0m3a7j9wz3r0zq8k7zE6t2r9fS4v7n2n6WvLz5a4mB3x3z0qM4rLhH1+q2lF4k9m2S2w2m1fW0q7rJ5eVQq2yYHqfGfY1Xwq3l1r1l2l+fM0r7gV2v0v3u3S2n5N7u7fZbM1f1t6r6b0bX0n8bSg7s1u7bT5m1jV8A6xJgk7Djj3J7U3q1d8s3m8x1b9x8U1+Y7mY0m6s0+e3D1fM1k9u9r2qvV9P8Aq7f3b1bHj1I6n2J8vXk4sG8x3V1r1u2yW9n1K+qv0XxC0bH3L2P6fL5Fj2cHnA7k1h4m7tZt5m2bV7uW7aG8w3l2t6cO5Gxg8k9aXQ0m2m7d9Vv7Pq8q+2V4q6t3aP1e7x0mGf0wTzJqWj1U6v1d9P8A1p8F1t6U1P2Gz0n0rJ7p7m2n1m3T2v1b8n3v1b1gW8q0b3d2y2w0W7d6uNQ6qfQ7HnJrS4rJmJ3zj3z1qfX8p8q0m7S7j9x3rXk3s7nV5r7b5b9r7r0o6b2X6z2yq7Vb4v6q6b6V7a7rX8S8N5yJ6k8YzV3q5o2b9m1l9n1n2V7k3m3a8m8c6eQyD0qS4t9r2n7v3d+3l7kVb0e0w3t3r1v7n3LxH8l0o7c4z1rM4q6w1m0vW9n1v2b9P7j7o3L7d5mQ0+JHf3z3rT2eP6s8q+3n7f3dZV2v1n3v2m9m4v1Gx6ZrX0W1m3U3k7V7n2S9k1+Y0D7k0+P6r8qk4r2YQkS0aWjKZ0TjQKp3g7mYb+1z5j1Q7mH6k1bWq3r8b9V9X2Tqk9m7j7o8r8U5r3z5r6hYq3b7r3U+4+YfY0Gq1f2b3l7r7k8u8s8w1j4r0m9n7V6t7t5b0v0n8x5V4rY4tG2jQxZ2k9c0v8A4j3p0e+g2m6b7m7m7d0n2Zf0+Q3yN1Qv9o1+7a9n9iP7n7k+1z8fIuW9rWm0+1m1+z6f1j7c4h7mKQw2X6b9l7v6v8A1m7u0v1a1m2v8A5P8A2P8A3mNf+N5dYq4s9m1m2S5JqW3H1A4r0T6m+3l7Y7r7b8n3w3W9b7v6n0m2X6n1m3i6p3n6W+Rk9mW3gk9e1Sx1fZr1v1b+2v1h7t9r7z+VdSx7m3m4n0i1J5r6c5q8p0n2r2n8fY0uJ3t3m8yJ7m7k4r0w3gVb4yPp3rN8Q9m0r7p1u7d2j7Y7V9m7Y7u7j+G7r9Q1V3v2j7m8j8l8o2v4m9n5tWzJmV6Q8yD2r8Z8UoJ0xqR8g+9N2r9r9v7b9k5Q4T6Zp6q3v7j7k8l1r0r3b7b8k5m9m7u0bZb3d0xHhHnHnP3q+2m+z9k7q7n7X4b2g4V5xj1rV0v1b9v8A0d+8WfT9N7G7m5m7p9Y9m8G4MZB6n1r6x4gk+1v7d9oP7gkq3X6l9r0g3bG2u2Z3d2g5Vx1r7r7o7v3w8q8m7U7d0t7V7u0v2b1j7Y8l7o7m7V9S9v0P8A2e4k2Gz2m2p3X6g7m7i+Q6o5H1r0C3v7L7V6f8A3J9m/8A1nPq9v8A6r8A/9k=" alt="Zhenai Xiao" />
+              <div>
+                <p class="max-w-2xl text-sm leading-7 text-white/72 md:text-[15px] md:leading-8">
+                  I’m Zhenai Xiao, a consultant working across communications, branding, public relations, and supply solutions. I help businesses refine their positioning, communicate more effectively, and move opportunities forward with greater clarity and impact.
+                </p>
+              </div>
+            </div>
           </div>
 
           <div class="mt-10">
             <div class="mini px-0 text-white/38">Contact</div>
-            <div class="mt-4 overflow-hidden rounded-[20px] border border-white/8 bg-white/[0.02]">
+            <div class="contact-wrap mt-4">
               <a href="#" class="contact-link flex items-center justify-between px-5 py-4 text-white/74">
                 <span>WhatsApp</span><span class="text-white/35">↗</span>
               </a>
