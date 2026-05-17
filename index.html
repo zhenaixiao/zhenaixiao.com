@@ -155,28 +155,28 @@ nav.on-light .nav-cta:hover { background: var(--red); color: #fff; }
   position: relative;
   width: 44px;
   height: 44px;
-  background: var(--paper);
-  border: 1px solid var(--rule);
+  background: var(--red);
+  border: 1px solid var(--red);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: background 0.25s, border-color 0.25s, transform 0.25s, box-shadow 0.25s;
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  box-shadow: 0 2px 8px rgba(200,16,46,0.25);
+  padding: 0;
 }
 .fc-item:hover {
-  background: var(--red);
-  border-color: var(--red);
+  background: var(--ink);
+  border-color: var(--ink);
   transform: scale(1.08);
-  box-shadow: 0 4px 14px rgba(200,16,46,0.25);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.35);
 }
 .fc-item svg {
   width: 18px; height: 18px;
-  fill: var(--ink);
+  fill: #fff;
   transition: fill 0.25s;
 }
-.fc-item:hover svg { fill: #fff; }
 .fc-tooltip {
   position: absolute;
   right: calc(100% + 12px);
@@ -184,6 +184,7 @@ nav.on-light .nav-cta:hover { background: var(--red); color: #fff; }
   transform: translateY(-50%);
   background: var(--ink);
   color: #fff;
+  font-family: var(--f-body);
   font-size: 11px;
   font-weight: 500;
   letter-spacing: 0.08em;
@@ -195,7 +196,7 @@ nav.on-light .nav-cta:hover { background: var(--red); color: #fff; }
 }
 .fc-item:hover .fc-tooltip { opacity: 1; }
 
-/* WeChat popover */
+/* WeChat popover — also show tooltip on hover when popover not active */
 .fc-wechat-pop {
   position: absolute;
   right: calc(100% + 12px);
@@ -203,16 +204,18 @@ nav.on-light .nav-cta:hover { background: var(--red); color: #fff; }
   transform: translateY(-50%);
   background: var(--ink);
   color: #fff;
-  padding: 14px 18px;
+  padding: 12px 18px;
   white-space: nowrap;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.25s;
+  font-family: var(--f-body);
 }
 .fc-wechat.active .fc-wechat-pop {
   opacity: 1;
   pointer-events: auto;
 }
+.fc-wechat.active .fc-tooltip { opacity: 0 !important; }
 .fc-wechat-pop .label {
   font-size: 9px;
   font-weight: 600;
@@ -265,7 +268,7 @@ nav.on-light .nav-cta:hover { background: var(--red); color: #fff; }
   position: relative;
   padding-left: 50px;
   opacity: 0;
-  animation: fadeIn 0.8s ease 0.3s forwards;
+  animation: fadeIn 0.6s ease 0.2s forwards;
 }
 .hero-eyebrow::before {
   content: '';
@@ -289,14 +292,14 @@ nav.on-light .nav-cta:hover { background: var(--red); color: #fff; }
 .hero-headline .line-1 {
   display: block;
   opacity: 0;
-  animation: floatDown 1s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards;
+  animation: floatDown 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
 }
 .hero-headline .line-2 {
   display: block;
   font-style: italic;
   color: var(--ink);
   opacity: 0;
-  animation: floatDown 1s cubic-bezier(0.16, 1, 0.3, 1) 2s forwards;
+  animation: floatDown 0.9s cubic-bezier(0.16, 1, 0.3, 1) 1.0s forwards;
 }
 
 .hero-shorthand {
@@ -308,7 +311,7 @@ nav.on-light .nav-cta:hover { background: var(--red); color: #fff; }
   color: #fff;
   letter-spacing: -0.005em;
   opacity: 0;
-  animation: floatDown 1s cubic-bezier(0.16, 1, 0.3, 1) 3.2s forwards;
+  animation: floatDown 0.9s cubic-bezier(0.16, 1, 0.3, 1) 2.0s forwards;
 }
 
 @keyframes floatDown {
@@ -682,7 +685,7 @@ nav.on-light .nav-cta:hover { background: var(--red); color: #fff; }
   font-weight: 500;
   letter-spacing: 0.38em;
   text-transform: uppercase;
-  color: #fff;
+  color: var(--ink);
   margin-bottom: 64px;
   display: flex;
   align-items: center;
@@ -693,7 +696,7 @@ nav.on-light .nav-cta:hover { background: var(--red); color: #fff; }
   content: '';
   display: inline-block;
   width: 40px; height: 1px;
-  background: #fff;
+  background: var(--red);
 }
 .trusted-logos {
   display: flex;
@@ -706,8 +709,7 @@ nav.on-light .nav-cta:hover { background: var(--red); color: #fff; }
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #fff;
-  padding: 28px 36px;
+  padding: 20px 32px;
   transition: transform 0.4s;
 }
 .trusted-logo:hover { transform: scale(1.05); }
@@ -715,7 +717,7 @@ nav.on-light .nav-cta:hover { background: var(--red); color: #fff; }
 .trusted-logo.cipp img { height: 175px; }
 .trusted-logo.cdv img  { height: 170px; }
 @media (max-width: 720px) {
-  .trusted-logo { padding: 20px 24px; }
+  .trusted-logo { padding: 16px 20px; }
   .trusted-logo.cipp img { height: 125px; }
   .trusted-logo.cdv img  { height: 122px; }
 }
@@ -739,13 +741,14 @@ nav.on-light .nav-cta:hover { background: var(--red); color: #fff; }
   line-height: 1.05;
   letter-spacing: -0.025em;
   margin-bottom: 28px;
+  color: #fff;
 }
 .contact-headline em { font-style: italic; color: var(--red); }
 
 .contact-note {
   font-size: 14.5px;
   font-weight: 300;
-  color: var(--muted);
+  color: rgba(255,255,255,0.65);
   line-height: 1.7;
   margin-bottom: 36px;
   max-width: 460px;
@@ -766,7 +769,8 @@ nav.on-light .nav-cta:hover { background: var(--red); color: #fff; }
   transition: background 0.25s, transform 0.25s, gap 0.25s;
 }
 .connect-btn:hover {
-  background: var(--ink);
+  background: #fff;
+  color: var(--red);
   transform: translateY(-2px);
   gap: 20px;
 }
@@ -777,10 +781,10 @@ nav.on-light .nav-cta:hover { background: var(--red); color: #fff; }
   letter-spacing: 0;
 }
 
-/* Chinese block */
+/* Chinese block — red bg */
 .contact-zh {
   padding: 40px;
-  background: var(--ink);
+  background: var(--red);
   color: #fff;
   position: relative;
 }
@@ -789,33 +793,34 @@ nav.on-light .nav-cta:hover { background: var(--red); color: #fff; }
   position: absolute;
   top: 0; left: 0;
   width: 4px; height: 100%;
-  background: var(--red);
+  background: #fff;
 }
 .czh-tag {
   font-size: 10px;
   font-weight: 600;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--red);
+  color: #fff;
   margin-bottom: 18px;
+  opacity: 0.85;
 }
 .czh-text {
   font-size: 14px;
-  color: rgba(255,255,255,0.88);
+  color: #fff;
   line-height: 1.85;
   letter-spacing: 0.02em;
   font-weight: 300;
 }
 .czh-text + .czh-text { margin-top: 12px; }
 .czh-text strong {
-  font-weight: 500;
+  font-weight: 600;
   color: #fff;
-  border-bottom: 1px solid var(--red);
+  border-bottom: 1px solid #fff;
   padding-bottom: 1px;
 }
 .czh-sub {
   font-size: 11px;
-  color: rgba(255,255,255,0.55);
+  color: rgba(255,255,255,0.7);
   margin-top: 18px;
   letter-spacing: 0.06em;
   font-weight: 500;
@@ -875,17 +880,18 @@ hr.ruled { border: none; border-top: 1px solid var(--rule); margin: 0; }
     <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
     <span class="fc-tooltip">Email</span>
   </a>
-  <a href="https://wa.me/15148856682" class="fc-item" target="_blank" aria-label="WhatsApp">
-    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-    <span class="fc-tooltip">WhatsApp</span>
-  </a>
   <button class="fc-item fc-wechat" id="fcWechat" aria-label="WeChat">
-    <svg viewBox="0 0 24 24"><path d="M8.69 6.31c.32 0 .6.21.6.55s-.27.55-.6.55-.6-.21-.6-.55.28-.55.6-.55zm3.5 0c.32 0 .6.21.6.55s-.27.55-.6.55-.6-.21-.6-.55.28-.55.6-.55zm5.81 5.61c0-3.31-3.16-6-7.07-6-3.91 0-7.07 2.69-7.07 6 0 3.31 3.16 6 7.07 6 .81 0 1.59-.12 2.32-.34l.21-.03c.13 0 .25.04.36.1l1.55.89.14.05c.14 0 .25-.11.25-.25l-.04-.18-.32-1.19-.02-.13c0-.16.09-.31.21-.4 1.55-1.12 2.41-2.7 2.41-4.52zM3.34 8.59c1.18-1.92 3.46-3.22 6.09-3.22 2.41 0 4.55 1.09 5.84 2.78-.16-.01-.32-.02-.48-.02-4.39 0-7.94 3-7.94 6.7 0 .31.03.62.08.92-.31-.05-.62-.11-.92-.19l-.27-.04c-.16 0-.31.04-.45.13l-1.94 1.12-.17.05a.31.31 0 01-.31-.31l.05-.22.4-1.49.03-.16c0-.2-.11-.39-.27-.5C1.42 13.04.4 11.05.4 8.85.4 5.06 4.04 2 8.51 2c3.18 0 5.94 1.55 7.27 3.81-.34-.05-.69-.08-1.05-.08-3.27 0-6.05 1.94-7.05 4.61-1.62-.23-3.06-.93-4.34-1.75z"/></svg>
+    <svg viewBox="0 0 1024 1024"><path d="M664.250054 368.541681c10.015098 0 19.892049 0.732687 29.67281 1.795902-26.647917-122.810047-159.358451-214.077703-310.826188-214.077703-169.353083 0-308.085774 114.232694-308.085774 259.274068 0 83.708494 46.165436 152.460344 123.281791 205.78483l-30.80868 91.730191 107.688651-53.455469c38.558178 7.53665 69.469615 15.308109 107.924012 15.308109 9.66308 0 19.230993-0.470721 28.752858-1.225921-6.025227-20.36584-9.521864-41.723264-9.521864-63.862493C402.328693 476.632491 517.908058 368.541681 664.250054 368.541681zM498.62178 285.87966c23.200398 0 38.557154 15.120372 38.557154 38.061874 0 22.846334-15.356756 38.156249-38.557154 38.156249-23.107046 0-46.260835-15.309916-46.260835-38.156249C452.360945 300.999009 475.514734 285.87966 498.62178 285.87966zM283.016215 362.09779c-23.107046 0-46.402782-15.309916-46.402782-38.156249 0-22.941502 23.295797-38.061874 46.402782-38.061874 23.081478 0 38.46176 15.120372 38.46176 38.061874C321.477975 346.787874 306.097693 362.09779 283.016215 362.09779zM945.448458 698.535633c0-121.92181-122.18539-221.276834-259.300888-221.276834-145.220299 0-259.643038 99.354048-259.643038 221.276834 0 122.07656 114.422738 221.211642 259.643038 221.211642 30.430571 0 61.107359-7.609305 91.683396-15.262455l83.823042 45.910784-22.977311-76.314364C899.379159 828.892217 945.448458 768.523631 945.448458 698.535633zM601.940333 660.499059c-15.332212 0-30.781321-15.121395-30.781321-30.502277 0-15.190981 15.449109-30.474662 30.781321-30.474662 23.295797 0 38.558178 15.283681 38.558178 30.474662C640.498511 645.377664 625.236131 660.499059 601.940333 660.499059zM770.488452 660.499059c-15.190981 0-30.541258-15.121395-30.541258-30.502277 0-15.190981 15.350277-30.474662 30.541258-30.474662 23.105 0 38.558178 15.283681 38.558178 30.474662C809.04663 645.377664 793.593452 660.499059 770.488452 660.499059z"/></svg>
+    <span class="fc-tooltip">WeChat</span>
     <span class="fc-wechat-pop">
       <div class="label">WeChat ID</div>
       <div class="id">zhenai_xiao</div>
     </span>
   </button>
+  <a href="https://wa.me/15148856682" class="fc-item" target="_blank" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+    <span class="fc-tooltip">WhatsApp</span>
+  </a>
   <a href="https://linkedin.com/in/zhenaixiao" class="fc-item" target="_blank" aria-label="LinkedIn">
     <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
     <span class="fc-tooltip">LinkedIn</span>
@@ -931,7 +937,7 @@ hr.ruled { border: none; border-top: 1px solid var(--rule); margin: 0; }
         <div class="flow-card-rule"></div>
         <ul class="flow-card-bullets">
           <li>Diagnostic report on how your brand currently lands with Western buyers — and what's costing you trust</li>
-          <li>Competitive analysis of brands winning in your category — what they do, what you can take</li>
+          <li>Competitive analysis of brands winning in your category — what is working for them, and what you can learn</li>
           <li>Audit of your existing channels, content, and spend — what's working, what's wasted</li>
           <li>Cultural positioning gaps — where your message is getting lost in translation</li>
         </ul>
@@ -944,8 +950,8 @@ hr.ruled { border: none; border-top: 1px solid var(--rule); margin: 0; }
         <h3 class="flow-card-title">Brand Strategy &amp; <em>Positioning</em></h3>
         <div class="flow-card-rule"></div>
         <ul class="flow-card-bullets">
-          <li>A clear market positioning — the story your brand tells to earn trust in the West</li>
-          <li>Brand book — voice, visual identity, and how your brand shows up consistently across every touchpoint</li>
+          <li>A clear market positioning — your own storytelling to establish brand credibility in Western markets</li>
+          <li>Brand book — voice, visual identity, and how your brand shows up consistently across every piece of content</li>
           <li>Channel strategy — which platforms to invest in, which to ignore, and why</li>
           <li>90-day content roadmap — the messages, formats, and rhythm that build credibility month over month</li>
         </ul>
@@ -958,9 +964,9 @@ hr.ruled { border: none; border-top: 1px solid var(--rule); margin: 0; }
         <h3 class="flow-card-title">Execution &amp; <em>Monitoring</em></h3>
         <div class="flow-card-rule"></div>
         <ul class="flow-card-bullets">
-          <li>Bilingual content production — short-form video, carousels, and written posts designed to convert attention into trust</li>
-          <li>Inbound and outbound engagement — DMs, comments, and outreach to your target buyers, distributors, and media</li>
-          <li>Partnership and PR development — building the third-party credibility that makes Western buyers take you seriously</li>
+          <li>English-language content production — reels, carousels, and graphics designed to convert attention into trust, traction, and sales</li>
+          <li>Community management — handling DMs, comments, and ongoing interactions with your audience</li>
+          <li>Partnership and PR development — outreach to target buyers, distributors, and media that builds third-party credibility for your brand</li>
           <li>Monthly performance reports with strategic recommendations — what's working, what to double down on, what to cut</li>
         </ul>
       </div>
@@ -1019,11 +1025,11 @@ hr.ruled { border: none; border-top: 1px solid var(--rule); margin: 0; }
         </p>
 
         <p class="about-body">
-          That experience is the foundation of how I work with brands today. I've written for cabinet ministers, advised foreign governments, and worked across four languages and three continents. The same precision and cultural fluency that institutional communications demand are exactly what's required when a brand wants to be taken seriously in a new market.
+          That experience is the foundation of how I work with brands today. I've written for cabinet ministers, advised foreign governments, and worked across three languages and three continents. The same precision and cultural fluency that institutional communications demand are exactly what's required when a brand wants to be taken seriously in a new market.
         </p>
 
         <p class="about-body">
-          I work primarily with <strong>Chinese brands expanding into North America</strong> — where strong products alone no longer earn trust. Western buyers evaluate brand presence, consistency, and cultural fluency before they ever evaluate the product itself. My role is to close that gap.
+          I work primarily with <strong>Chinese brands expanding into North America</strong> — where the rules of brand-building are fundamentally different. Western buyers evaluate credibility through a different cultural lens than the domestic Chinese market. My role is to close that gap.
         </p>
       </div>
     </div>
@@ -1086,7 +1092,7 @@ hr.ruled { border: none; border-top: 1px solid var(--rule); margin: 0; }
 
 
 <!-- TRUSTED BY -->
-<div class="section-wrap red" data-bg="red">
+<div class="section-wrap light" data-bg="light">
   <div class="trusted">
     <div class="trusted-label js-reveal">Trusted By</div>
     <div class="trusted-logos js-reveal">
@@ -1102,7 +1108,7 @@ hr.ruled { border: none; border-top: 1px solid var(--rule); margin: 0; }
 
 
 <!-- CONTACT -->
-<div class="section-wrap light" data-bg="light">
+<div class="section-wrap dark" data-bg="dark">
   <div class="section" id="contact" style="padding-bottom: clamp(64px, 8vw, 96px);">
     <div class="section-label js-reveal">Contact</div>
 
@@ -1142,7 +1148,10 @@ hr.ruled { border: none; border-top: 1px solid var(--rule); margin: 0; }
 
 <footer>
   <div>© 2026 <span class="f-red">Zhenai Xiao</span> · Communications &amp; Market Development</div>
-  <div>Montréal · 蒙特利尔</div>
+  <div style="display:flex; align-items:center; gap:24px;">
+    <a href="coaching.html" style="color:var(--muted); transition:color 0.2s;" onmouseover="this.style.color='var(--red)'" onmouseout="this.style.color='var(--muted)'">1:1 Coaching &rarr;</a>
+    <span>Montréal · 蒙特利尔</span>
+  </div>
 </footer>
 
 
