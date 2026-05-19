@@ -385,7 +385,7 @@ nav.on-light .nav-menu-btn { color: var(--ink); }
   position: relative;
 }
 .hero {
-  min-height: 80svh;
+  min-height: 74svh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -774,6 +774,53 @@ nav.on-light .nav-menu-btn { color: var(--ink); }
   margin-bottom: 18px;
 }
 .about-body strong { font-weight: 500; color: #fff; }
+
+/* Coaching callout — sits in dark About section */
+.coaching-callout {
+  margin-top: 36px;
+  padding: 26px 30px;
+  background: var(--red);
+  color: #fff;
+  border-radius: 14px;
+  position: relative;
+}
+.coaching-callout-eyebrow {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #fff;
+  opacity: 0.85;
+  margin-bottom: 10px;
+}
+.coaching-callout p {
+  font-family: var(--f-display);
+  font-size: clamp(15px, 1.4vw, 18px);
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+  color: #fff;
+}
+.coaching-callout p em {
+  font-style: italic;
+}
+.coaching-callout a.cc-link {
+  display: inline-block;
+  margin-top: 14px;
+  font-family: var(--f-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #fff;
+  border-bottom: 1px solid #fff;
+  padding-bottom: 2px;
+  transition: opacity 0.2s, padding-right 0.25s;
+}
+.coaching-callout a.cc-link:hover {
+  opacity: 0.85;
+  padding-right: 8px;
+}
 
 /* ============================================================
    PROCESS
@@ -1426,6 +1473,12 @@ hr.ruled { border: none; border-top: 1px solid var(--rule); margin: 0; }
         <p class="about-body">
           I work with two kinds of clients: <strong>Chinese brands expanding into North America</strong>, where the rules of brand-building are fundamentally different from the domestic market, and <strong>growing North American businesses</strong> whose brand presence hasn't caught up to what they have to offer. In both cases, my role is to close the gap between what the business can deliver and what the brand actually signals.
         </p>
+
+        <div class="coaching-callout">
+          <div class="coaching-callout-eyebrow">1:1 Coaching</div>
+          <p>Want to refine your <em>communications and professional image</em> — and unlock opportunities you know you deserve? I offer 1:1 coaching for young professionals and those entering new fields.</p>
+          <a href="coaching.html" class="cc-link">Learn More &rarr;</a>
+        </div>
       </div>
     </div>
   </div>
