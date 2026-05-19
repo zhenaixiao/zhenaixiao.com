@@ -746,6 +746,53 @@ nav.on-light .lang-sep { color: var(--rule); }
 }
 .about-body strong { font-weight: 500; color: #fff; }
 
+/* Coaching callout — sits in dark About section */
+.coaching-callout {
+  margin-top: 36px;
+  padding: 26px 30px;
+  background: var(--red);
+  color: #fff;
+  border-radius: 14px;
+  position: relative;
+}
+.coaching-callout-eyebrow {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #fff;
+  opacity: 0.85;
+  margin-bottom: 10px;
+}
+.coaching-callout p {
+  font-family: var(--f-zh);
+  font-size: clamp(15px, 1.4vw, 18px);
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+  color: #fff;
+}
+.coaching-callout p em {
+  font-weight: 600;
+}
+.coaching-callout a.cc-link {
+  display: inline-block;
+  margin-top: 14px;
+  font-family: var(--f-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #fff;
+  border-bottom: 1px solid #fff;
+  padding-bottom: 2px;
+  transition: opacity 0.2s, padding-right 0.25s;
+}
+.coaching-callout a.cc-link:hover {
+  opacity: 0.85;
+  padding-right: 8px;
+}
+
 /* ============================================================
    PROCESS
    ============================================================ */
@@ -974,6 +1021,197 @@ nav.on-light .lang-sep { color: var(--rule); }
   font-weight: 500;
 }
 
+/* ============================================================
+   CONTACT FORM
+   ============================================================ */
+.form-section-wrap {
+  background: var(--red);
+  padding: clamp(64px, 9vw, 96px) var(--pad);
+}
+.form-section {
+  max-width: 720px;
+  margin: 0 auto;
+  background: var(--paper);
+  border-radius: 24px;
+  padding: clamp(40px, 5vw, 56px) clamp(28px, 4vw, 48px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+}
+.form-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+.form-eyebrow {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--red);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.form-eyebrow::before {
+  content: '';
+  display: block;
+  width: 22px; height: 1px;
+  background: var(--red);
+}
+.form-headline {
+  font-family: var(--f-zh);
+  font-weight: 500;
+  font-size: clamp(26px, 3.4vw, 40px);
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+}
+.form-headline em {
+  font-style: normal;
+  color: var(--red);
+}
+.form-note {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.7;
+  font-family: var(--f-zh);
+}
+
+.contact-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px 28px;
+}
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.form-field.full { grid-column: 1 / -1; }
+.form-label {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--ink);
+  font-family: var(--f-zh);
+}
+.form-label .req { color: var(--red); margin-left: 4px; }
+.form-field input,
+.form-field select,
+.form-field textarea {
+  font-family: var(--f-body);
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--ink);
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--rule);
+  padding: 8px 0 10px;
+  outline: none;
+  transition: border-color 0.25s;
+  width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+}
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  border-bottom-color: var(--red);
+}
+.form-field textarea {
+  resize: vertical;
+  min-height: 80px;
+  line-height: 1.55;
+  font-family: var(--f-zh);
+}
+.form-field select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23C8102E'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 4px center;
+  background-size: 18px;
+  cursor: pointer;
+  padding-right: 28px;
+  font-family: var(--f-zh);
+}
+
+.form-checks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 24px;
+}
+@media (max-width: 640px) { .form-checks { grid-template-columns: 1fr; } }
+.form-check {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  padding: 3px 0;
+}
+.form-check input {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--red);
+  cursor: pointer;
+  appearance: auto;
+  -webkit-appearance: auto;
+  padding: 0;
+}
+.form-check span {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--ink);
+  line-height: 1.4;
+  font-family: var(--f-zh);
+}
+
+.form-submit {
+  grid-column: 1 / -1;
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+}
+.form-submit button {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--ink);
+  color: #fff;
+  font-family: var(--f-zh);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  padding: 17px 38px;
+  border: none;
+  cursor: pointer;
+  border-radius: 999px;
+  transition: background 0.25s, transform 0.25s, gap 0.25s;
+}
+.form-submit button:hover {
+  background: var(--red);
+  transform: translateY(-2px);
+  gap: 20px;
+}
+.form-submit button .arrow {
+  font-family: var(--f-display);
+  font-style: italic;
+  font-size: 18px;
+}
+.form-status {
+  font-size: 12.5px;
+  color: var(--muted);
+  font-style: italic;
+  font-family: var(--f-zh);
+}
+.form-status.success { color: var(--red); font-weight: 500; }
+.form-status.error   { color: #B00020; }
+
+@media (max-width: 720px) {
+  .contact-form { grid-template-columns: 1fr; gap: 22px; }
+}
+
 footer {
   border-top: 1px solid var(--rule);
   padding: 26px var(--pad);
@@ -1189,8 +1427,14 @@ hr.ruled { border: none; border-top: 1px solid var(--rule); margin: 0; }
         </p>
 
         <p class="about-body">
-          我主要服务于<strong>正在进入北美市场的中国品牌</strong>——在这里，品牌建设的逻辑与国内市场截然不同。西方买家用一套不同的文化视角来评判品牌的可信度。我的角色，是帮助品牌跨越这道鸿沟。
+          我服务于两类客户：<strong>正在进入北美市场的中国品牌</strong>——在这里，品牌建设的逻辑与国内市场截然不同；以及<strong>正在成长的北美企业</strong>——他们的品牌呈现尚未跟上他们所能交付的价值。无论哪一类，我的角色都是缩小当前品牌所传达的信息与企业实际能力之间的距离。
         </p>
+
+        <div class="coaching-callout">
+          <div class="coaching-callout-eyebrow">1:1 一对一辅导</div>
+          <p>想要打磨您的<em style="font-style: normal;">沟通表达与职业形象</em>——开启您应得的发展机会？我为年轻专业人士与正在进入新领域的人士提供 1:1 辅导。<span style="opacity:0.85; font-size:0.92em;">辅导以英文进行，建议参与者具备中级及以上英语水平。</span></p>
+          <a href="coaching.html" class="cc-link">了解更多 &rarr;</a>
+        </div>
       </div>
     </div>
   </div>
@@ -1218,7 +1462,7 @@ hr.ruled { border: none; border-top: 1px solid var(--rule); margin: 0; }
         <div class="step-num">02</div>
         <div>
           <h3 class="step-title" style="font-family: var(--f-zh); font-weight: 500;">品牌<em style="font-style: normal; color: var(--red);">审视</em></h3>
-          <p class="step-body">一份书面诊断报告——分析品牌在西方买家眼中的现状：什么在起效，什么被忽视，什么在悄悄削弱信任。</p>
+          <p class="step-body">一份书面诊断报告——分析品牌在您希望进入的市场中的现状：什么在起效，什么被忽视，什么正在拖慢您的前行步伐。</p>
         </div>
       </div>
       <div class="step">
@@ -1303,10 +1547,98 @@ hr.ruled { border: none; border-top: 1px solid var(--rule); margin: 0; }
 </div>
 
 
+<!-- CONTACT FORM SECTION -->
+<div class="form-section-wrap" data-bg="red">
+  <div class="form-section">
+    <div class="form-intro js-reveal">
+      <div class="form-eyebrow">让我们开始合作</div>
+      <h2 class="form-headline">您的需求，<em>专注呈现。</em></h2>
+      <p class="form-note">几个简短的问题——让我们的第一次对话直击关键。</p>
+    </div>
+
+    <form class="contact-form js-reveal" id="contactForm" action="https://formspree.io/f/mwvzprra" method="POST">
+      <div class="form-field">
+        <label class="form-label" for="cf-name">姓名 <span class="req">*</span></label>
+        <input type="text" id="cf-name" name="name" required autocomplete="name" />
+      </div>
+
+      <div class="form-field">
+        <label class="form-label" for="cf-company">公司 / 品牌 <span class="req">*</span></label>
+        <input type="text" id="cf-company" name="company" required autocomplete="organization" />
+      </div>
+
+      <div class="form-field">
+        <label class="form-label" for="cf-email">邮箱 <span class="req">*</span></label>
+        <input type="email" id="cf-email" name="email" required autocomplete="email" />
+      </div>
+
+      <div class="form-field">
+        <label class="form-label" for="cf-lang">首选沟通语言 <span class="req">*</span></label>
+        <select id="cf-lang" name="preferred_language" required>
+          <option value="" disabled selected>请选择…</option>
+          <option value="中文 (Chinese)">中文</option>
+          <option value="English">English 英文</option>
+          <option value="Français">Français 法文</option>
+          <option value="Other">其他</option>
+        </select>
+      </div>
+
+      <div class="form-field">
+        <label class="form-label" for="cf-location">业务所在地 <span class="req">*</span></label>
+        <select id="cf-location" name="business_location" required>
+          <option value="" disabled selected>请选择…</option>
+          <option value="China">中国</option>
+          <option value="United States">美国</option>
+          <option value="Canada">加拿大</option>
+          <option value="Other">其他</option>
+        </select>
+      </div>
+
+      <div class="form-field">
+        <label class="form-label" for="cf-stage">业务阶段 <span class="req">*</span></label>
+        <select id="cf-stage" name="business_stage" required>
+          <option value="" disabled selected>请选择…</option>
+          <option value="Pre-launch — getting ready to enter the market">准备进入市场——筹备中</option>
+          <option value="Recently launched — building first traction">刚刚启动——正在建立初步影响力</option>
+          <option value="Growing — established, ready to scale">稳步发展——准备规模化</option>
+          <option value="Established — repositioning or entering a new market">成熟阶段——重新定位或进入新市场</option>
+        </select>
+      </div>
+
+      <div class="form-field full">
+        <label class="form-label">您希望获得哪些方面的帮助？<span class="req">*</span></label>
+        <div class="form-checks">
+          <label class="form-check"><input type="checkbox" name="help[]" value="Brand strategy & positioning" /><span>品牌战略与定位</span></label>
+          <label class="form-check"><input type="checkbox" name="help[]" value="Visual identity & brand book" /><span>视觉识别与品牌手册</span></label>
+          <label class="form-check"><input type="checkbox" name="help[]" value="Social media content & strategy" /><span>社交媒体内容与策略</span></label>
+          <label class="form-check"><input type="checkbox" name="help[]" value="English-language content (for non-EN brands)" /><span>英文内容制作（针对非英文母语品牌）</span></label>
+          <label class="form-check"><input type="checkbox" name="help[]" value="Market entry into North America" /><span>进入北美市场</span></label>
+          <label class="form-check"><input type="checkbox" name="help[]" value="PR, partnerships & outreach" /><span>公关、合作与渠道拓展</span></label>
+          <label class="form-check"><input type="checkbox" name="help[]" value="Not sure yet — want to discuss" /><span>暂时不确定——想先聊聊</span></label>
+        </div>
+      </div>
+
+      <div class="form-field full">
+        <label class="form-label" for="cf-message">其他想分享的内容？<span style="color:var(--muted); font-weight:400; font-size:11px; margin-left:6px;">（可选）</span></label>
+        <textarea id="cf-message" name="message" placeholder="如有需要，欢迎补充相关背景。如无，也可不填——我会通过邮件与您进一步沟通。"></textarea>
+      </div>
+
+      <div class="form-submit">
+        <button type="submit">
+          携手共建
+          <span class="arrow">&rarr;</span>
+        </button>
+        <p class="form-status" id="formStatus"></p>
+      </div>
+    </form>
+  </div>
+</div>
+
+
 <footer>
   <div>© 2026 <span class="f-red">肖珍爱 Zhenai Xiao</span> · 传播与市场拓展</div>
   <div style="display:flex; align-items:center; gap:24px;">
-    <a href="coaching.html" style="color:var(--muted); transition:color 0.2s;" onmouseover="this.style.color='var(--red)'" onmouseout="this.style.color='var(--muted)'">1:1 一对一辅导 &rarr;</a>
+    <a href="privacy.html" style="color:var(--muted); transition:color 0.2s;" onmouseover="this.style.color='var(--red)'" onmouseout="this.style.color='var(--muted)'">隐私政策</a>
     <span>蒙特利尔 · Montréal</span>
   </div>
 </footer>
@@ -1383,7 +1715,6 @@ if (carousel) {
 const nav = document.querySelector('nav');
 const floating = document.getElementById('floatingContacts');
 const sections = document.querySelectorAll('[data-bg]');
-const heroBlock = document.querySelector('.hero-block');
 
 function updateChrome() {
   // Nav background
@@ -1396,18 +1727,15 @@ function updateChrome() {
   if (currentBg === 'red') nav.classList.add('on-red');
   else if (currentBg === 'dark') nav.classList.add('on-dark');
   else nav.classList.add('on-light');
-
-  // Floating sidebar — show after hero
-  const heroRect = heroBlock.getBoundingClientRect();
-  if (heroRect.bottom < 100) {
-    floating.classList.add('visible');
-  } else {
-    floating.classList.remove('visible');
-  }
 }
 window.addEventListener('scroll', updateChrome, { passive: true });
 window.addEventListener('resize', updateChrome);
 updateChrome();
+
+// Floating sidebar — appear after hero animation finishes (2.8s)
+setTimeout(() => {
+  floating.classList.add('visible');
+}, 2800);
 
 // WeChat popover toggle
 const fcWechat = document.getElementById('fcWechat');
@@ -1416,6 +1744,44 @@ fcWechat.addEventListener('click', (e) => {
   fcWechat.classList.toggle('active');
 });
 document.addEventListener('click', () => fcWechat.classList.remove('active'));
+
+// Contact form — AJAX submit to Formspree
+const contactForm = document.getElementById('contactForm');
+const formStatus = document.getElementById('formStatus');
+if (contactForm) {
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const anyChecked = contactForm.querySelectorAll('input[name="help[]"]:checked').length > 0;
+    if (!anyChecked) {
+      formStatus.textContent = "请至少选择一项您希望获得的帮助。";
+      formStatus.className = 'form-status error';
+      return;
+    }
+
+    formStatus.textContent = '正在发送…';
+    formStatus.className = 'form-status';
+
+    const data = new FormData(contactForm);
+    try {
+      const res = await fetch(contactForm.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        contactForm.reset();
+        formStatus.textContent = "感谢——我已收到您的信息，将在 48 小时内与您联系。";
+        formStatus.className = 'form-status success';
+      } else {
+        formStatus.textContent = "发送失败。请直接邮件联系：communications@zhenaixiao.com";
+        formStatus.className = 'form-status error';
+      }
+    } catch (err) {
+      formStatus.textContent = "网络错误。请直接邮件联系：communications@zhenaixiao.com";
+      formStatus.className = 'form-status error';
+    }
+  });
+}
 </script>
 
 </body>
