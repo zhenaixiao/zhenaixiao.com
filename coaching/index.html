@@ -274,13 +274,14 @@
 <div class="form-section-wrap" id="contact">
   <div class="form-section js-reveal">
     <div class="form-intro">
-      <div class="form-eyebrow">Request a Session</div>
-      <h2 class="form-headline">Let's <em>talk.</em></h2>
-      <p class="form-note">Three quick questions. I'll follow up within 48 hours to schedule your complimentary intro call.</p>
+      <div class="form-eyebrow">Coaching Application</div>
+      <h2 class="form-headline">Let's <em>begin.</em></h2>
+      <p class="form-note">A few questions so I can understand where you are and tailor my approach to what you're working toward. I read every application personally and reply within 48 hours with a private link to book your intro call.</p>
     </div>
 
     <form class="coach-form" id="coachForm" action="https://formspree.io/f/mwvzprra" method="POST">
-      <input type="hidden" name="form_type" value="coaching" />
+      <input type="hidden" name="form_type" value="coaching_application" />
+      <input type="hidden" name="_subject" value="New coaching application — zhenaixiao.com" />
 
       <div class="form-row">
         <div class="form-field">
@@ -293,33 +294,99 @@
         </div>
       </div>
 
-      <div class="form-field">
-        <label class="form-label" for="cf-stage">Where are you in your career? <span class="req">*</span></label>
-        <select id="cf-stage" name="career_stage" required>
-          <option value="" disabled selected>Select…</option>
-          <option value="Student">Student</option>
-          <option value="Early career (0-3 years)">Early career (0-3 years)</option>
-          <option value="Mid-career, growing into a new role">Mid-career, growing into a new role</option>
-          <option value="Career changer / pivoter">Career changer / pivoter</option>
-          <option value="Other">Other</option>
-        </select>
+      <div class="form-row">
+        <div class="form-field">
+          <label class="form-label" for="cf-stage">Where are you in your career? <span class="req">*</span></label>
+          <select id="cf-stage" name="career_stage" required>
+            <option value="" disabled selected>Select…</option>
+            <option value="Student">Student</option>
+            <option value="Early career (0-3 years)">Early career (0-3 years)</option>
+            <option value="Mid-career, growing into a new role">Mid-career, growing into a new role</option>
+            <option value="Career changer / pivoter">Career changer / pivoter</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label class="form-label" for="cf-language">Preferred language</label>
+          <select id="cf-language" name="preferred_language">
+            <option value="" disabled selected>Select…</option>
+            <option value="English">English</option>
+            <option value="中文 (Chinese)">中文 (Chinese)</option>
+            <option value="Français">Français</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
       </div>
 
       <div class="form-field">
-        <label class="form-label" for="cf-focus">What feels most urgent? <span class="req">*</span></label>
-        <select id="cf-focus" name="focus" required>
-          <option value="" disabled selected>Select…</option>
-          <option value="Positioning — figuring out how to be seen">Positioning — figuring out how to be seen</option>
-          <option value="Speaking & presenting">Speaking &amp; presenting</option>
-          <option value="Professional image">Professional image</option>
-          <option value="All of the above — let's audit">All of the above — let's audit</option>
-          <option value="Not sure yet — want to discuss">Not sure yet — want to discuss</option>
-        </select>
+        <label class="form-label" for="cf-prompt">What prompted you to look into coaching now? <span class="req">*</span></label>
+        <textarea id="cf-prompt" name="q1_why_now" required placeholder="What's going on right now that made you reach out."></textarea>
+      </div>
+
+      <div class="form-field">
+        <label class="form-label">What would you like to work on? <span class="req">*</span> <span class="opt">(select at least 3)</span></label>
+        <div class="form-checks">
+          <label class="form-check"><input type="checkbox" name="focus[]" value="Speaking & presence" /><span>Speaking &amp; presence</span></label>
+          <label class="form-check"><input type="checkbox" name="focus[]" value="Professional image" /><span>Professional image</span></label>
+          <label class="form-check"><input type="checkbox" name="focus[]" value="Positioning & personal brand" /><span>Positioning &amp; personal brand</span></label>
+          <label class="form-check"><input type="checkbox" name="focus[]" value="LinkedIn / profile" /><span>LinkedIn / profile</span></label>
+          <label class="form-check"><input type="checkbox" name="focus[]" value="Interview preparation" /><span>Interview preparation</span></label>
+          <label class="form-check"><input type="checkbox" name="focus[]" value="Networking" /><span>Networking</span></label>
+          <label class="form-check"><input type="checkbox" name="focus[]" value="Career direction" /><span>Career direction</span></label>
+          <label class="form-check"><input type="checkbox" name="focus[]" value="Not sure yet — let's audit" /><span>Not sure yet — let's audit</span></label>
+        </div>
+      </div>
+
+      <div class="form-field">
+        <label class="form-label" for="cf-challenge">What's your biggest professional challenge right now? <span class="req">*</span></label>
+        <textarea id="cf-challenge" name="q3_challenge" required placeholder="The thing that's hardest, or that keeps coming up."></textarea>
+      </div>
+
+      <div class="form-field">
+        <label class="form-label" for="cf-goal">Is there a specific goal or milestone you're working toward? <span class="opt">(optional)</span></label>
+        <textarea id="cf-goal" name="q4_goal" placeholder="A new job, promotion, leadership role, grad school, business launch…"></textarea>
+      </div>
+
+      <div class="form-field">
+        <label class="form-label" for="cf-speaking">When you speak or present, how do you feel about how you come across? <span class="opt">(optional)</span></label>
+        <textarea id="cf-speaking" name="q5_speaking" placeholder="In meetings, interviews, on camera, on stage — wherever it matters to you."></textarea>
+      </div>
+
+      <div class="form-field">
+        <label class="form-label" for="cf-onething">What's one thing you'd want people to understand about you professionally? <span class="opt">(optional)</span></label>
+        <textarea id="cf-onething" name="q6_one_thing"></textarea>
+      </div>
+
+      <div class="form-field">
+        <label class="form-label" for="cf-success">Six months from now, what would success look like? <span class="req">*</span></label>
+        <textarea id="cf-success" name="q7_success" required></textarea>
+      </div>
+
+      <div class="form-row">
+        <div class="form-field">
+          <label class="form-label" for="cf-format">Preferred format</label>
+          <select id="cf-format" name="format">
+            <option value="" disabled selected>Select…</option>
+            <option value="Virtual">Virtual</option>
+            <option value="In person (Montréal)">In person (Montréal)</option>
+            <option value="Either">Either</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label class="form-label" for="cf-timeline">Timeline</label>
+          <select id="cf-timeline" name="timeline">
+            <option value="" disabled selected>Select…</option>
+            <option value="As soon as possible">As soon as possible</option>
+            <option value="In the next month">In the next month</option>
+            <option value="In the next few months">In the next few months</option>
+            <option value="Just exploring for now">Just exploring for now</option>
+          </select>
+        </div>
       </div>
 
       <div class="form-submit">
         <button type="submit">
-          Let's Talk
+          Submit Application
           <span class="arrow">&rarr;</span>
         </button>
         <p class="form-status" id="formStatus"></p>

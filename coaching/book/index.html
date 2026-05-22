@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Book Your Session — Zhenai Xiao</title>
+<meta name="robots" content="noindex, nofollow" />
+<meta name="description" content="Private booking page for approved coaching clients." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/the-seasons" rel="stylesheet">
+
+<link rel="stylesheet" href="/assets/style.css" />
+</head>
+<body class="page-coaching">
+
+<div class="form-section-wrap" id="book">
+  <div class="form-section">
+    <div class="form-intro">
+      <div class="form-eyebrow">You're in</div>
+      <h2 class="form-headline">Book your <em>intro call.</em></h2>
+      <p class="form-note">Pick a time that works for you below. If nothing fits, just reply to my email and we'll find one.</p>
+    </div>
+
+    <!-- Cal.com inline embed — event: zhenaixiao/zhenai-xiao-coaching-complimentary-session.
+         To change which event shows, edit the calLink below. Keep this page UNLISTED
+         (not linked anywhere; noindex) and share its URL only with approved applicants. -->
+    <div id="cal-inline" style="width:100%;min-height:620px;overflow:hidden;margin-top:32px"></div>
+    <script type="text/javascript">
+      (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+      Cal("init", "coaching", { origin: "https://cal.com" });
+      Cal.ns.coaching("inline", {
+        elementOrSelector: "#cal-inline",
+        config: { layout: "month_view" },
+        calLink: "zhenaixiao/zhenai-xiao-coaching-complimentary-session",
+      });
+      Cal.ns.coaching("ui", {
+        cssVarsPerTheme: { light: { "cal-brand": "#7BB7C2" } },
+        hideEventTypeDetails: false,
+        layout: "month_view",
+      });
+    </script>
+
+    <p class="form-note booking-back">
+      <a href="/coaching/">&larr; Back to coaching</a>
+    </p>
+  </div>
+</div>
+
+</body>
+</html>

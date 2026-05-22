@@ -167,6 +167,7 @@
   const T = zh
     ? {
         pick: "请至少选择一项您希望获得的帮助。",
+        pickFocus: "请至少选择三项您希望改进的方面。",
         sending: "正在发送…",
         success: "感谢——我已收到您的信息，将在 48 小时内与您联系。",
         error: "发送失败。请直接邮件联系：communications@zhenaixiao.com",
@@ -174,6 +175,7 @@
       }
     : {
         pick: "Please select at least one option for what you're looking for.",
+        pickFocus: "Please choose at least three things you'd like to work on.",
         sending: "Sending…",
         success: "Thanks — message received. I'll be in touch within 48 hours.",
         error:
@@ -182,12 +184,11 @@
           "Network error. Please email me directly at communications@zhenaixiao.com.",
       };
 
-  async function submit(form, requireHelp) {
-    if (requireHelp) {
-      const anyChecked =
-        form.querySelectorAll('input[name="help[]"]:checked').length > 0;
-      if (!anyChecked) {
-        status.textContent = T.pick;
+  async function submit(form, validate) {
+    if (validate) {
+      const error = validate(form);
+      if (error) {
+        status.textContent = error;
         status.className = "form-status error";
         return;
       }
@@ -221,17 +222,20 @@
     }
   }
 
+  const countChecked = (form, name) =>
+    form.querySelectorAll(`input[name="${name}"]:checked`).length;
+
   const contactForm = document.getElementById("contactForm");
   if (contactForm)
     contactForm.addEventListener("submit", (e) => {
       e.preventDefault();
-      submit(contactForm, true);
+      submit(contactForm, (f) => (countChecked(f, "help[]") > 0 ? null : T.pick));
     });
 
   const coachForm = document.getElementById("coachForm");
   if (coachForm)
     coachForm.addEventListener("submit", (e) => {
       e.preventDefault();
-      submit(coachForm, false);
+      submit(coachForm, (f) => (countChecked(f, "focus[]") >= 3 ? null : T.pickFocus));
     });
 })();

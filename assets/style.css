@@ -3533,7 +3533,15 @@
       margin-left: 4px;
     }
   }
-  body.page-coaching .form-field input, body.page-coaching .form-field select {
+  body.page-coaching .form-label .opt {
+    color: var(--muted);
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 11px;
+    margin-left: 6px;
+  }
+  body.page-coaching .form-field input, body.page-coaching .form-field select, body.page-coaching .form-field textarea {
     font-family: var(--f-body);
     font-size: 15px;
     font-weight: 400;
@@ -3548,8 +3556,86 @@
     appearance: none;
     -webkit-appearance: none;
   }
-  body.page-coaching .form-field input:focus, body.page-coaching .form-field select:focus {
+  body.page-coaching .form-field input:focus, body.page-coaching .form-field select:focus, body.page-coaching .form-field textarea:focus {
     border-bottom-color: var(--aqua-deep);
+  }
+  body.page-coaching .form-field textarea {
+    resize: vertical;
+    min-height: 84px;
+    line-height: 1.55;
+  }
+  body.page-coaching .form-field textarea::placeholder {
+    color: var(--muted);
+  }
+  body.page-coaching .form-checks {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 24px;
+    margin-top: 4px;
+  }
+  @media (max-width: 640px) {
+    body.page-coaching .form-checks {
+      grid-template-columns: 1fr;
+    }
+  }
+  body.page-coaching .form-check {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    padding: 3px 0;
+    & input {
+      width: 16px;
+      height: 16px;
+      border: 1px solid var(--rule);
+      background: var(--paper);
+      accent-color: var(--aqua-deep);
+      cursor: pointer;
+      appearance: auto;
+      -webkit-appearance: auto;
+      padding: 0;
+    }
+    & span {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--ink);
+      line-height: 1.4;
+    }
+  }
+  body.page-coaching .booking-embed-placeholder {
+    margin-top: 40px;
+    border: 1px dashed var(--aqua-deep);
+    border-radius: 14px;
+    min-height: 320px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 48px 24px;
+    color: var(--muted);
+    & .hint { font-size: 13px; }
+  }
+  body.page-coaching .book-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 40px;
+    background: var(--ink);
+    color: #fff;
+    font-family: var(--f-body);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    padding: 16px 36px;
+    transition: background 0.25s;
+    &:hover { background: var(--aqua-navy); }
+  }
+  body.page-coaching .booking-back {
+    margin-top: 32px;
+    & a { color: var(--aqua-deep); }
   }
   body.page-coaching .form-field select {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%237BB7C2'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
