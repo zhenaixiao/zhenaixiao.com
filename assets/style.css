@@ -3028,12 +3028,12 @@
     opacity: 0;
     animation: cg-floatDown 0.9s cubic-bezier(0.16, 1, 0.3, 1) 1.8s forwards;
     & .ti-1 {
-      color: var(--aqua-navy);
+      color: var(--ink);
       font-weight: 400;
       font-style: italic;
     }
     & .ti-2 {
-      color: var(--ink);
+      color: #fff;
       font-weight: 400;
       font-style: italic;
       opacity: 1;
@@ -3317,7 +3317,9 @@
     letter-spacing: 0.18em;
     text-transform: uppercase;
     flex-shrink: 0;
-    min-width: 28px;
+    width: 64px;
+    text-align: center;
+    white-space: nowrap;
   }
   body.page-coaching .aud-text {
     font-size: 15px;
