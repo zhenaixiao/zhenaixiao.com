@@ -3003,7 +3003,7 @@
     margin-bottom: 38px;
     & .line-1 {
       display: block;
-      color: #fff;
+      color: var(--ink);
       font-weight: 400;
       opacity: 0;
       animation: cg-floatDown 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
