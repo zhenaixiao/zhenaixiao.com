@@ -168,6 +168,7 @@
     ? {
         pick: "请至少选择一项您希望获得的帮助。",
         pickFocus: "请至少选择三项您希望改进的方面。",
+        rate: "请在五个方面都为自己打分。",
         sending: "正在发送…",
         success: "感谢——我已收到您的信息，将在 48 小时内与您联系。",
         error: "发送失败。请直接邮件联系：communications@zhenaixiao.com",
@@ -176,6 +177,7 @@
     : {
         pick: "Please select at least one option for what you're looking for.",
         pickFocus: "Please choose at least three things you'd like to work on.",
+        rate: "Please rate yourself on all five.",
         sending: "Sending…",
         success: "Thanks — message received. I'll be in touch within 48 hours.",
         error:
@@ -205,7 +207,7 @@
       });
       if (res.ok) {
         form.reset();
-        status.textContent = T.success;
+        status.textContent = form.dataset.success || T.success;
         status.className = "form-status success";
       } else {
         let msg = T.error;
@@ -237,5 +239,23 @@
     coachForm.addEventListener("submit", (e) => {
       e.preventDefault();
       submit(coachForm, (f) => (countChecked(f, "focus[]") >= 3 ? null : T.pickFocus));
+    });
+
+  const RATE_GROUPS = [
+    "rate_confidence",
+    "rate_clarity",
+    "rate_presence",
+    "rate_image",
+    "rate_online",
+  ];
+  const auditForm = document.getElementById("auditForm");
+  if (auditForm)
+    auditForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      submit(auditForm, (f) =>
+        RATE_GROUPS.every((g) => f.querySelector(`input[name="${g}"]:checked`))
+          ? null
+          : T.rate,
+      );
     });
 })();

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Image Audit — Zhenai Xiao</title>
+<meta name="robots" content="noindex, nofollow" />
+<meta name="description" content="Pre-session image audit for coaching clients." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/the-seasons" rel="stylesheet">
+
+<link rel="stylesheet" href="/assets/style.css" />
+</head>
+<body class="page-coaching">
+
+<div class="form-section-wrap" id="audit">
+  <div class="form-section">
+    <div class="form-intro">
+      <div class="form-eyebrow">Image Audit</div>
+      <h2 class="form-headline">Let's map where you <em>stand.</em></h2>
+      <p class="form-note">Before our first session — a short, honest audit of your speaking and professional image: your strengths, your gaps, and where you want to go. There are no wrong answers; this just lets me tailor our work to you.</p>
+    </div>
+
+    <form class="coach-form" id="auditForm" action="https://formspree.io/f/mwvzprra" method="POST"
+          data-success="Thank you — got it. I'll review this before our session.">
+      <input type="hidden" name="form_type" value="image_audit" />
+      <input type="hidden" name="_subject" value="Pre-session image audit — zhenaixiao.com" />
+
+      <div class="form-row">
+        <div class="form-field">
+          <label class="form-label" for="au-name">Name <span class="req">*</span></label>
+          <input type="text" id="au-name" name="name" required autocomplete="name" />
+        </div>
+        <div class="form-field">
+          <label class="form-label" for="au-email">Email <span class="req">*</span></label>
+          <input type="email" id="au-email" name="email" required autocomplete="email" />
+        </div>
+      </div>
+
+      <div class="audit-section-label">SWOT — your speaking &amp; professional image</div>
+
+      <div class="swot-grid">
+        <div class="swot-cell swot-s">
+          <label class="swot-head" for="au-strengths">Strengths <span class="req">*</span></label>
+          <textarea id="au-strengths" name="swot_strengths" required placeholder="What are you genuinely good at in how you speak and present yourself? What do people notice or compliment?"></textarea>
+        </div>
+        <div class="swot-cell swot-w">
+          <label class="swot-head" for="au-weaknesses">Weaknesses <span class="req">*</span></label>
+          <textarea id="au-weaknesses" name="swot_weaknesses" required placeholder="Where do you feel least confident, or what trips you up? (rambling, filler words, nerves, coming across as junior…)"></textarea>
+        </div>
+        <div class="swot-cell swot-o">
+          <label class="swot-head" for="au-opportunities">Opportunities <span class="req">*</span></label>
+          <textarea id="au-opportunities" name="swot_opportunities" required placeholder="Where could a stronger voice and image open real doors right now? (interviews, a promotion, networking, LinkedIn…)"></textarea>
+        </div>
+        <div class="swot-cell swot-t">
+          <label class="swot-head" for="au-threats">Threats <span class="req">*</span></label>
+          <textarea id="au-threats" name="swot_threats" required placeholder="What's working against you or holding you back? (how you're perceived, habits, fear, blending into a crowded field…)"></textarea>
+        </div>
+      </div>
+
+      <div class="audit-section-label">Baseline — rate yourself today <span class="opt">(1 = needs work · 5 = strong)</span></div>
+
+      <div class="scale-group">
+        <div class="scale-row">
+          <span class="scale-label">Speaking confidence</span>
+          <div class="scale" role="radiogroup" aria-label="Speaking confidence">
+            <input type="radio" id="rc1" name="rate_confidence" value="1" /><label for="rc1">1</label>
+            <input type="radio" id="rc2" name="rate_confidence" value="2" /><label for="rc2">2</label>
+            <input type="radio" id="rc3" name="rate_confidence" value="3" /><label for="rc3">3</label>
+            <input type="radio" id="rc4" name="rate_confidence" value="4" /><label for="rc4">4</label>
+            <input type="radio" id="rc5" name="rate_confidence" value="5" /><label for="rc5">5</label>
+          </div>
+        </div>
+        <div class="scale-row">
+          <span class="scale-label">Clarity of speech</span>
+          <div class="scale" role="radiogroup" aria-label="Clarity of speech">
+            <input type="radio" id="rl1" name="rate_clarity" value="1" /><label for="rl1">1</label>
+            <input type="radio" id="rl2" name="rate_clarity" value="2" /><label for="rl2">2</label>
+            <input type="radio" id="rl3" name="rate_clarity" value="3" /><label for="rl3">3</label>
+            <input type="radio" id="rl4" name="rate_clarity" value="4" /><label for="rl4">4</label>
+            <input type="radio" id="rl5" name="rate_clarity" value="5" /><label for="rl5">5</label>
+          </div>
+        </div>
+        <div class="scale-row">
+          <span class="scale-label">Presence &amp; body language</span>
+          <div class="scale" role="radiogroup" aria-label="Presence and body language">
+            <input type="radio" id="rp1" name="rate_presence" value="1" /><label for="rp1">1</label>
+            <input type="radio" id="rp2" name="rate_presence" value="2" /><label for="rp2">2</label>
+            <input type="radio" id="rp3" name="rate_presence" value="3" /><label for="rp3">3</label>
+            <input type="radio" id="rp4" name="rate_presence" value="4" /><label for="rp4">4</label>
+            <input type="radio" id="rp5" name="rate_presence" value="5" /><label for="rp5">5</label>
+          </div>
+        </div>
+        <div class="scale-row">
+          <span class="scale-label">Professional image</span>
+          <div class="scale" role="radiogroup" aria-label="Professional image">
+            <input type="radio" id="ri1" name="rate_image" value="1" /><label for="ri1">1</label>
+            <input type="radio" id="ri2" name="rate_image" value="2" /><label for="ri2">2</label>
+            <input type="radio" id="ri3" name="rate_image" value="3" /><label for="ri3">3</label>
+            <input type="radio" id="ri4" name="rate_image" value="4" /><label for="ri4">4</label>
+            <input type="radio" id="ri5" name="rate_image" value="5" /><label for="ri5">5</label>
+          </div>
+        </div>
+        <div class="scale-row">
+          <span class="scale-label">LinkedIn / online presence</span>
+          <div class="scale" role="radiogroup" aria-label="LinkedIn or online presence">
+            <input type="radio" id="rn1" name="rate_online" value="1" /><label for="rn1">1</label>
+            <input type="radio" id="rn2" name="rate_online" value="2" /><label for="rn2">2</label>
+            <input type="radio" id="rn3" name="rate_online" value="3" /><label for="rn3">3</label>
+            <input type="radio" id="rn4" name="rate_online" value="4" /><label for="rn4">4</label>
+            <input type="radio" id="rn5" name="rate_online" value="5" /><label for="rn5">5</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-field">
+        <label class="form-label" for="au-goal">By the end of our work, what do you most want to be able to do — or be known for? <span class="req">*</span></label>
+        <textarea id="au-goal" name="goal" required></textarea>
+      </div>
+
+      <div class="form-field">
+        <label class="form-label" for="au-linkedin">LinkedIn / profile link <span class="req">*</span> <span class="opt">so I can review it beforehand</span></label>
+        <input type="url" id="au-linkedin" name="linkedin" required placeholder="https://linkedin.com/in/…" />
+      </div>
+
+      <div class="form-submit">
+        <button type="submit">
+          Send My Audit
+          <span class="arrow">&rarr;</span>
+        </button>
+        <p class="form-status" id="formStatus"></p>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="/assets/main.js"></script>
+</body>
+</html>
