@@ -3685,23 +3685,42 @@
     text-transform: uppercase;
     & .req { color: currentColor; opacity: 0.65; }
   }
-  body.page-coaching .swot-cell textarea {
+  body.page-coaching .swot-sub {
+    font-size: 11px;
+    font-style: italic;
+    color: var(--muted);
+    margin-top: -4px;
+  }
+  body.page-coaching .swot-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 4px;
+  }
+  body.page-coaching .swot-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  body.page-coaching .swot-item input {
     width: 100%;
-    min-height: 132px;
-    resize: vertical;
-    background: rgba(255, 255, 255, 0.72);
-    border: 1px solid rgba(12, 12, 12, 0.06);
-    border-radius: 9px;
-    padding: 11px 13px;
+    background: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgba(12, 12, 12, 0.07);
+    border-radius: 8px;
+    padding: 8px 11px;
     font-family: var(--f-body);
     font-size: 12.5px;
     font-weight: 300;
-    line-height: 1.45;
     color: var(--ink);
     outline: none;
     transition: border-color 0.2s;
-    &:focus { border-color: rgba(12, 12, 12, 0.22); }
+    &:focus { border-color: rgba(12, 12, 12, 0.24); }
     &::placeholder { color: var(--muted); }
+  }
+  body.page-coaching .swot-item .swot-action {
+    margin-left: 16px;
+    width: calc(100% - 16px);
+    background: rgba(255, 255, 255, 0.45);
   }
   body.page-coaching .swot-s { background: #E6F2E9; & .swot-head { color: #3F7A54; } }
   body.page-coaching .swot-w { background: #FBF2D4; & .swot-head { color: #927420; } }
