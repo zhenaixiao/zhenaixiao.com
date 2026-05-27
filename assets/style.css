@@ -3665,11 +3665,8 @@
   }
   body.page-coaching .swot-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 14px;
-  }
-  @media (max-width: 600px) {
-    body.page-coaching .swot-grid { grid-template-columns: 1fr; }
   }
   body.page-coaching .swot-cell {
     border-radius: 14px;
