@@ -308,8 +308,8 @@
           </select>
         </div>
         <div class="form-field">
-          <label class="form-label" for="cf-language">Preferred language</label>
-          <select id="cf-language" name="preferred_language">
+          <label class="form-label" for="cf-language">Preferred language <span class="req">*</span></label>
+          <select id="cf-language" name="preferred_language" required>
             <option value="" disabled selected>Select…</option>
             <option value="English">English</option>
             <option value="中文 (Chinese)">中文 (Chinese)</option>
@@ -351,23 +351,23 @@
       <div class="audit-section-label">Where you're starting from <span class="opt">(1 = needs work · 5 = strong · we'll re-measure as we go)</span></div>
       <div class="scale-group">
         <div class="scale-row">
-          <span class="scale-label">Speaking confidence</span>
-          <div class="scale" role="radiogroup" aria-label="Speaking confidence">
-            <input type="radio" id="bc1" name="baseline_confidence" value="1" /><label for="bc1">1</label>
-            <input type="radio" id="bc2" name="baseline_confidence" value="2" /><label for="bc2">2</label>
-            <input type="radio" id="bc3" name="baseline_confidence" value="3" /><label for="bc3">3</label>
-            <input type="radio" id="bc4" name="baseline_confidence" value="4" /><label for="bc4">4</label>
-            <input type="radio" id="bc5" name="baseline_confidence" value="5" /><label for="bc5">5</label>
+          <span class="scale-label">Voice &amp; spoken delivery</span>
+          <div class="scale" role="radiogroup" aria-label="Voice and spoken delivery">
+            <input type="radio" id="bv1" name="baseline_voice" value="1" /><label for="bv1">1</label>
+            <input type="radio" id="bv2" name="baseline_voice" value="2" /><label for="bv2">2</label>
+            <input type="radio" id="bv3" name="baseline_voice" value="3" /><label for="bv3">3</label>
+            <input type="radio" id="bv4" name="baseline_voice" value="4" /><label for="bv4">4</label>
+            <input type="radio" id="bv5" name="baseline_voice" value="5" /><label for="bv5">5</label>
           </div>
         </div>
         <div class="scale-row">
-          <span class="scale-label">Clarity of speech</span>
-          <div class="scale" role="radiogroup" aria-label="Clarity of speech">
-            <input type="radio" id="bl1" name="baseline_clarity" value="1" /><label for="bl1">1</label>
-            <input type="radio" id="bl2" name="baseline_clarity" value="2" /><label for="bl2">2</label>
-            <input type="radio" id="bl3" name="baseline_clarity" value="3" /><label for="bl3">3</label>
-            <input type="radio" id="bl4" name="baseline_clarity" value="4" /><label for="bl4">4</label>
-            <input type="radio" id="bl5" name="baseline_clarity" value="5" /><label for="bl5">5</label>
+          <span class="scale-label">Clarity of positioning</span>
+          <div class="scale" role="radiogroup" aria-label="Clarity of positioning">
+            <input type="radio" id="bo1" name="baseline_positioning" value="1" /><label for="bo1">1</label>
+            <input type="radio" id="bo2" name="baseline_positioning" value="2" /><label for="bo2">2</label>
+            <input type="radio" id="bo3" name="baseline_positioning" value="3" /><label for="bo3">3</label>
+            <input type="radio" id="bo4" name="baseline_positioning" value="4" /><label for="bo4">4</label>
+            <input type="radio" id="bo5" name="baseline_positioning" value="5" /><label for="bo5">5</label>
           </div>
         </div>
         <div class="scale-row">
@@ -381,18 +381,18 @@
           </div>
         </div>
         <div class="scale-row">
-          <span class="scale-label">Professional image</span>
-          <div class="scale" role="radiogroup" aria-label="Professional image">
-            <input type="radio" id="bi1" name="baseline_image" value="1" /><label for="bi1">1</label>
-            <input type="radio" id="bi2" name="baseline_image" value="2" /><label for="bi2">2</label>
-            <input type="radio" id="bi3" name="baseline_image" value="3" /><label for="bi3">3</label>
-            <input type="radio" id="bi4" name="baseline_image" value="4" /><label for="bi4">4</label>
-            <input type="radio" id="bi5" name="baseline_image" value="5" /><label for="bi5">5</label>
+          <span class="scale-label">Perceived credibility &amp; authority</span>
+          <div class="scale" role="radiogroup" aria-label="Perceived credibility and authority">
+            <input type="radio" id="bd1" name="baseline_credibility" value="1" /><label for="bd1">1</label>
+            <input type="radio" id="bd2" name="baseline_credibility" value="2" /><label for="bd2">2</label>
+            <input type="radio" id="bd3" name="baseline_credibility" value="3" /><label for="bd3">3</label>
+            <input type="radio" id="bd4" name="baseline_credibility" value="4" /><label for="bd4">4</label>
+            <input type="radio" id="bd5" name="baseline_credibility" value="5" /><label for="bd5">5</label>
           </div>
         </div>
         <div class="scale-row">
-          <span class="scale-label">LinkedIn / online presence</span>
-          <div class="scale" role="radiogroup" aria-label="LinkedIn or online presence">
+          <span class="scale-label">LinkedIn / online professional presence</span>
+          <div class="scale" role="radiogroup" aria-label="LinkedIn or online professional presence">
             <input type="radio" id="bn1" name="baseline_online" value="1" /><label for="bn1">1</label>
             <input type="radio" id="bn2" name="baseline_online" value="2" /><label for="bn2">2</label>
             <input type="radio" id="bn3" name="baseline_online" value="3" /><label for="bn3">3</label>
@@ -408,14 +408,14 @@
       </div>
 
       <div class="form-field">
-        <label class="form-label" for="cf-linkedin">LinkedIn or online profile <span class="opt">(optional)</span></label>
-        <input type="url" id="cf-linkedin" name="linkedin" autocomplete="url" placeholder="https://linkedin.com/in/…" />
+        <label class="form-label" for="cf-linkedin">LinkedIn or online profile <span class="req">*</span></label>
+        <input type="url" id="cf-linkedin" name="linkedin" required autocomplete="url" placeholder="https://linkedin.com/in/…" />
       </div>
 
       <div class="form-row">
         <div class="form-field">
-          <label class="form-label" for="cf-format">Preferred format</label>
-          <select id="cf-format" name="format">
+          <label class="form-label" for="cf-format">Preferred format <span class="req">*</span></label>
+          <select id="cf-format" name="format" required>
             <option value="" disabled selected>Select…</option>
             <option value="Virtual">Virtual</option>
             <option value="In person (Montréal)">In person (Montréal)</option>
@@ -423,8 +423,8 @@
           </select>
         </div>
         <div class="form-field">
-          <label class="form-label" for="cf-timeline">Timeline</label>
-          <select id="cf-timeline" name="timeline">
+          <label class="form-label" for="cf-timeline">Timeline <span class="req">*</span></label>
+          <select id="cf-timeline" name="timeline" required>
             <option value="" disabled selected>Select…</option>
             <option value="As soon as possible">As soon as possible</option>
             <option value="In the next month">In the next month</option>

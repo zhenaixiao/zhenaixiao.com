@@ -234,18 +234,30 @@
       submit(contactForm, (f) => (countChecked(f, "help[]") > 0 ? null : T.pick));
     });
 
+  const BASELINE_GROUPS = [
+    "baseline_voice",
+    "baseline_positioning",
+    "baseline_presence",
+    "baseline_credibility",
+    "baseline_online",
+  ];
   const coachForm = document.getElementById("coachForm");
   if (coachForm)
     coachForm.addEventListener("submit", (e) => {
       e.preventDefault();
-      submit(coachForm, (f) => (countChecked(f, "focus[]") >= 3 ? null : T.pickFocus));
+      submit(coachForm, (f) => {
+        if (countChecked(f, "focus[]") < 3) return T.pickFocus;
+        if (!BASELINE_GROUPS.every((g) => f.querySelector(`input[name="${g}"]:checked`)))
+          return T.rate;
+        return null;
+      });
     });
 
   const RATE_GROUPS = [
-    "rate_confidence",
-    "rate_clarity",
+    "rate_voice",
+    "rate_positioning",
     "rate_presence",
-    "rate_image",
+    "rate_credibility",
     "rate_online",
   ];
   const auditForm = document.getElementById("auditForm");
