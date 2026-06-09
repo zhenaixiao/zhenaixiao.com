@@ -255,10 +255,11 @@
 
       <div class="price-panel">
         <div class="price-eyebrow">Investment</div>
-        <div class="price-amount"><span class="from">from</span>$125<span class="unit">CAD / session</span></div>
+        <div class="price-amount">$200<span class="unit">CAD / hour</span></div>
         <div class="price-divider"></div>
-        <p class="price-note"><strong>60-minute single sessions</strong> from $125 CAD.</p>
-        <p class="price-note"><strong>Multi-session packages</strong> available by inquiry — let's discuss what makes sense for you.</p>
+        <p class="price-note"><strong>60-minute sessions</strong> at $200 CAD per hour.</p>
+        <p class="price-note"><strong>Student discounts</strong> available — just mention it in your application.</p>
+        <p class="price-note"><strong>Multi-session packages</strong> are usually offered at a reduced rate — let's discuss what makes sense for you.</p>
       </div>
     </div>
 
@@ -343,18 +344,72 @@
       </div>
 
       <div class="form-field">
-        <label class="form-label" for="cf-goal">Is there a specific goal or milestone you're working toward? <span class="opt">(optional)</span></label>
-        <textarea id="cf-goal" name="q4_goal" placeholder="A new job, promotion, leadership role, grad school, business launch…"></textarea>
+        <label class="form-label" for="cf-speaking">When you speak or present, how do you feel about how you come across? <span class="req">*</span></label>
+        <textarea id="cf-speaking" name="q5_speaking" required placeholder="In meetings, interviews, on camera, on stage — wherever it matters to you."></textarea>
+      </div>
+
+      <div class="audit-section-label">Where you're starting from <span class="opt">(1 = needs work · 5 = strong · we'll re-measure as we go)</span></div>
+      <div class="scale-group">
+        <div class="scale-row">
+          <span class="scale-label">Speaking confidence</span>
+          <div class="scale" role="radiogroup" aria-label="Speaking confidence">
+            <input type="radio" id="bc1" name="baseline_confidence" value="1" /><label for="bc1">1</label>
+            <input type="radio" id="bc2" name="baseline_confidence" value="2" /><label for="bc2">2</label>
+            <input type="radio" id="bc3" name="baseline_confidence" value="3" /><label for="bc3">3</label>
+            <input type="radio" id="bc4" name="baseline_confidence" value="4" /><label for="bc4">4</label>
+            <input type="radio" id="bc5" name="baseline_confidence" value="5" /><label for="bc5">5</label>
+          </div>
+        </div>
+        <div class="scale-row">
+          <span class="scale-label">Clarity of speech</span>
+          <div class="scale" role="radiogroup" aria-label="Clarity of speech">
+            <input type="radio" id="bl1" name="baseline_clarity" value="1" /><label for="bl1">1</label>
+            <input type="radio" id="bl2" name="baseline_clarity" value="2" /><label for="bl2">2</label>
+            <input type="radio" id="bl3" name="baseline_clarity" value="3" /><label for="bl3">3</label>
+            <input type="radio" id="bl4" name="baseline_clarity" value="4" /><label for="bl4">4</label>
+            <input type="radio" id="bl5" name="baseline_clarity" value="5" /><label for="bl5">5</label>
+          </div>
+        </div>
+        <div class="scale-row">
+          <span class="scale-label">Presence &amp; body language</span>
+          <div class="scale" role="radiogroup" aria-label="Presence and body language">
+            <input type="radio" id="bp1" name="baseline_presence" value="1" /><label for="bp1">1</label>
+            <input type="radio" id="bp2" name="baseline_presence" value="2" /><label for="bp2">2</label>
+            <input type="radio" id="bp3" name="baseline_presence" value="3" /><label for="bp3">3</label>
+            <input type="radio" id="bp4" name="baseline_presence" value="4" /><label for="bp4">4</label>
+            <input type="radio" id="bp5" name="baseline_presence" value="5" /><label for="bp5">5</label>
+          </div>
+        </div>
+        <div class="scale-row">
+          <span class="scale-label">Professional image</span>
+          <div class="scale" role="radiogroup" aria-label="Professional image">
+            <input type="radio" id="bi1" name="baseline_image" value="1" /><label for="bi1">1</label>
+            <input type="radio" id="bi2" name="baseline_image" value="2" /><label for="bi2">2</label>
+            <input type="radio" id="bi3" name="baseline_image" value="3" /><label for="bi3">3</label>
+            <input type="radio" id="bi4" name="baseline_image" value="4" /><label for="bi4">4</label>
+            <input type="radio" id="bi5" name="baseline_image" value="5" /><label for="bi5">5</label>
+          </div>
+        </div>
+        <div class="scale-row">
+          <span class="scale-label">LinkedIn / online presence</span>
+          <div class="scale" role="radiogroup" aria-label="LinkedIn or online presence">
+            <input type="radio" id="bn1" name="baseline_online" value="1" /><label for="bn1">1</label>
+            <input type="radio" id="bn2" name="baseline_online" value="2" /><label for="bn2">2</label>
+            <input type="radio" id="bn3" name="baseline_online" value="3" /><label for="bn3">3</label>
+            <input type="radio" id="bn4" name="baseline_online" value="4" /><label for="bn4">4</label>
+            <input type="radio" id="bn5" name="baseline_online" value="5" /><label for="bn5">5</label>
+          </div>
+        </div>
       </div>
 
       <div class="form-field">
-        <label class="form-label" for="cf-speaking">When you speak or present, how do you feel about how you come across? <span class="opt">(optional)</span></label>
-        <textarea id="cf-speaking" name="q5_speaking" placeholder="In meetings, interviews, on camera, on stage — wherever it matters to you."></textarea>
+        <label class="form-label" for="cf-scope">What's your ideal scope for your career — and is there a nearer-term goal driving this? <span class="req">*</span></label>
+        <textarea id="cf-scope" name="q6_career_scope" required placeholder="Think bigger than the next job — real visibility in your field, stepping into leadership or politics, growing as an artist or public figure, becoming a recognized voice. Where do you ultimately want this to take you? And if there's a specific milestone in the near term (a new job, promotion, grad school, a launch), mention that too."></textarea>
       </div>
 
       <div class="form-field">
-        <label class="form-label" for="cf-scope">What's your ideal scope for your career? <span class="req">*</span></label>
-        <textarea id="cf-scope" name="q6_career_scope" required placeholder="Think bigger than the next job — real visibility in your field, stepping into leadership or politics, growing as an artist or public figure, becoming a recognized voice. Where do you ultimately want this to take you?"></textarea>
+        <label class="form-label" for="cf-linkedin">LinkedIn or online profile <span class="opt">(optional)</span></label>
+        <input type="url" id="cf-linkedin" name="linkedin" autocomplete="url" placeholder="https://linkedin.com/in/…" />
       </div>
 
       <div class="form-row">
