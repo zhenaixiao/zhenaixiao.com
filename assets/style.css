@@ -1060,7 +1060,10 @@
   }
   body.page-index .trusted {
     text-align: center;
-    padding: clamp(48px, 7vw, 78px) var(--pad);
+    /* Asymmetric on purpose: the section above is also light, so its bottom
+       padding stacks invisibly with ours. Less on top, more underneath, so the
+       logos aren't crowded against the dark section that follows. */
+    padding: clamp(16px, 2.5vw, 26px) var(--pad) clamp(56px, 8vw, 104px);
     max-width: var(--max);
     margin: 0 auto;
   }
@@ -2402,7 +2405,7 @@
   }
   body.page-ch .trusted {
     text-align: center;
-    padding: clamp(56px, 8vw, 90px) var(--pad);
+    padding: clamp(18px, 2.8vw, 30px) var(--pad) clamp(60px, 8.5vw, 112px);
     max-width: var(--max);
     margin: 0 auto;
   }
