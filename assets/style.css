@@ -1117,7 +1117,7 @@
       padding-right: 0;
     }
     &.adb img {
-      width: min(500px, 36vw);
+      width: min(340px, 28vw);
       height: auto;
     }
   }
@@ -2456,7 +2456,7 @@
       padding-right: 0;
     }
     &.adb img {
-      width: min(500px, 36vw);
+      width: min(340px, 28vw);
       height: auto;
     }
   }
