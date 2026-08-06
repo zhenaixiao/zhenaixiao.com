@@ -1,24 +1,22 @@
 # zhenaixiao.com — to do
 
-## French (FR-CA) version
-Add a French version of the site. Currently EN + 中文 only.
+## French (FR-CA) — homepage done, awaiting review
+`/fr/` is built as a real indexed page (not an in-page swap), matching how
+`/cn/` works. Search engines see the French; a shared French link previews in
+French. `hreflang` tags on all three pages point at each other.
 
-Why it matters: based in Montréal, the footer reads *Montréal · 蒙特利尔*, the
-About section shows an **FR** language pill, and the coaching form offers
-*Français* — but there is no French page to send anyone to. For a
-communications consultant in Quebec this reads as a gap rather than a choice.
+The page reuses the `page-index` stylesheet — French is Latin script, so no
+CSS fork was needed, unlike `/cn/`.
 
-Decision to make first: a real indexed `/fr/` page (like `/cn/`) versus an
-in-page copy swap. Prefer `/fr/` — atelierdubund.com went the in-page route and
-the consequence is that search engines only ever see the English, and a link
-shared from the French view still previews in English.
-
-Note: French runs ~20% longer than English. Headings on a tight measure will
-need their own line-break pass.
+### Still English-only
+- **`/coaching/`** — the French nav and the About callout both link here, so a
+  French visitor lands on an English page. Biggest remaining gap.
+- **`/privacy/`** — footer links to it as *Politique de confidentialité*.
 
 ## Open decisions
-- **"Trusted By" label.** The strip now carries Atelier du Bund alongside two
-  client logos. Decide the label — see the note in the site copy discussion.
-- **中文 page parity.** The EN copy changes (services wording, the website /
-  digital presence bullet, the new About paragraph, the intake form's
-  "Website & digital presence" option) have not been mirrored to `/cn/`.
+- **"Trusted By" label.** The strip carries Atelier du Bund alongside two client
+  logos. FR uses *Ils me font confiance*.
+- **Apostrophes.** The whole site uses straight `'`, including the new French
+  page (kept consistent on purpose). Careful French typography wants the curly
+  `’`, and French uses apostrophes twice as often as English. Worth a
+  site-wide pass if you want it — all three languages together, not just FR.

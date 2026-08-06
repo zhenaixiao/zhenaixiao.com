@@ -163,28 +163,41 @@
   const status = document.getElementById("formStatus");
   if (!status) return;
 
-  const zh = (document.documentElement.lang || "en").toLowerCase().startsWith("zh");
-  const T = zh
-    ? {
-        pick: "请至少选择一项您希望获得的帮助。",
-        pickFocus: "请至少选择三项您希望改进的方面。",
-        rate: "请在五个方面都为自己打分。",
-        sending: "正在发送…",
-        success: "感谢——我已收到您的信息，将在 48 小时内与您联系。",
-        error: "发送失败。请直接邮件联系：communications@zhenaixiao.com",
-        network: "网络错误。请直接邮件联系：communications@zhenaixiao.com",
-      }
-    : {
-        pick: "Please select at least one option for what you're looking for.",
-        pickFocus: "Please choose at least three things you'd like to work on.",
-        rate: "Please rate yourself on all five.",
-        sending: "Sending…",
-        success: "Thanks — message received. I'll be in touch within 48 hours.",
-        error:
-          "Something went wrong. Please email me directly at communications@zhenaixiao.com.",
-        network:
-          "Network error. Please email me directly at communications@zhenaixiao.com.",
-      };
+  const lang = (document.documentElement.lang || "en").toLowerCase();
+  const locale = lang.startsWith("zh") ? "zh" : lang.startsWith("fr") ? "fr" : "en";
+  const T = {
+    zh: {
+      pick: "请至少选择一项您希望获得的帮助。",
+      pickFocus: "请至少选择三项您希望改进的方面。",
+      rate: "请在五个方面都为自己打分。",
+      sending: "正在发送…",
+      success: "感谢——我已收到您的信息，将在 48 小时内与您联系。",
+      error: "发送失败。请直接邮件联系：communications@zhenaixiao.com",
+      network: "网络错误。请直接邮件联系：communications@zhenaixiao.com",
+    },
+    fr: {
+      pick: "Veuillez choisir au moins un type d'accompagnement.",
+      pickFocus: "Veuillez choisir au moins trois aspects à travailler.",
+      rate: "Veuillez vous évaluer sur les cinq points.",
+      sending: "Envoi en cours…",
+      success: "Merci, votre message est bien reçu. Je vous réponds sous 48 heures.",
+      error:
+        "Une erreur est survenue. Écrivez-moi directement à communications@zhenaixiao.com.",
+      network:
+        "Erreur de connexion. Écrivez-moi directement à communications@zhenaixiao.com.",
+    },
+    en: {
+      pick: "Please select at least one option for what you're looking for.",
+      pickFocus: "Please choose at least three things you'd like to work on.",
+      rate: "Please rate yourself on all five.",
+      sending: "Sending…",
+      success: "Thanks — message received. I'll be in touch within 48 hours.",
+      error:
+        "Something went wrong. Please email me directly at communications@zhenaixiao.com.",
+      network:
+        "Network error. Please email me directly at communications@zhenaixiao.com.",
+    },
+  }[locale];
 
   async function submit(form, validate) {
     if (validate) {
@@ -211,7 +224,9 @@
         status.className = "form-status success";
       } else {
         let msg = T.error;
-        if (!zh) {
+        // Formspree's own error strings are English only — surface them
+        // on the English page, fall back to our copy everywhere else.
+        if (locale === "en") {
           const json = await res.json().catch(() => ({}));
           msg = json.error || T.error;
         }
