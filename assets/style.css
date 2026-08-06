@@ -624,6 +624,18 @@
       color: var(--red);
     }
   }
+  /* The hard breaks in these headings are cut for desktop measure; on a phone
+     they strand single words on their own line. Let the text wrap itself. */
+  @media (max-width: 600px) {
+    body.page-index .section-heading br,
+    body.page-index .contact-headline br {
+      display: none;
+    }
+    body.page-index .section-heading,
+    body.page-index .contact-headline {
+      text-wrap: pretty;
+    }
+  }
   body.page-index .dark .section-heading em, body.page-index .red .section-heading em {
     color: #fff;
   }
@@ -1063,7 +1075,7 @@
     /* Asymmetric on purpose: the section above is also light, so its bottom
        padding stacks invisibly with ours. Less on top, more underneath, so the
        logos aren't crowded against the dark section that follows. */
-    padding: clamp(16px, 2.5vw, 26px) var(--pad) clamp(56px, 8vw, 104px);
+    padding: clamp(16px, 2.5vw, 26px) var(--pad) clamp(76px, 10vw, 136px);
     max-width: var(--max);
     margin: 0 auto;
   }
@@ -2405,7 +2417,7 @@
   }
   body.page-ch .trusted {
     text-align: center;
-    padding: clamp(18px, 2.8vw, 30px) var(--pad) clamp(60px, 8.5vw, 112px);
+    padding: clamp(18px, 2.8vw, 30px) var(--pad) clamp(80px, 10.5vw, 144px);
     max-width: var(--max);
     margin: 0 auto;
   }
