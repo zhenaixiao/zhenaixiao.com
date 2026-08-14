@@ -285,4 +285,13 @@
           : T.rate,
       );
     });
+
+  // Worksheet — one named client, every question optional by design so she can
+  // skip anything she gets stuck on. Nothing to validate.
+  const worksheetForm = document.getElementById("worksheetForm");
+  if (worksheetForm)
+    worksheetForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      submit(worksheetForm);
+    });
 })();
