@@ -1,2 +1,5 @@
 .DS_Store
 .claude/
+
+# Client working files — this repo is public and is the web root.
+contracts/
