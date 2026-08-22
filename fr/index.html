@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Zhenai Xiao — Conseillère en communication et développement de marché</title>
+<title>Zhenai Advisory — Conseillère en communication et développement de marché</title>
 <meta name="description" content="Conseillère en communication et développement de marché à Montréal. J'aide les marques en expansion à gagner la confiance que leurs produits méritent." />
 
 <link rel="alternate" hreflang="en" href="https://zhenaixiao.com/" />
@@ -17,13 +17,18 @@
 <link href="https://fonts.cdnfonts.com/css/the-seasons" rel="stylesheet">
 
 <link rel="stylesheet" href="/assets/style.css" />
+<link rel="stylesheet" href="/assets/hero.css" />
+
+<script defer src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
+<script defer src="/assets/hero.js"></script>
 </head>
 <body class="page-index">
 
 <nav class="on-red">
   <div class="nav-mark">
     <span class="nav-dot"></span>
-    <span class="nav-name">Zhenai Xiao</span>
+    <span class="nav-name">Zhenai Advisory</span>
   </div>
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
@@ -56,7 +61,7 @@
   <a href="#contact" class="md-link md-nav-item">Contact</a>
   <a href="/coaching/" class="md-link coaching">Coaching individuel →</a>
   <div class="md-bottom">
-    <span>© 2026 Zhenai Xiao</span>
+    <span>© 2026 Zhenai Advisory</span>
     <span class="md-lang">
       <a href="/">EN</a>
       <span>|</span>
@@ -94,22 +99,40 @@
 
 
 <!-- HERO -->
-<div class="hero-block" data-bg="red">
-  <section class="hero">
-    <div class="hero-eyebrow">
-      Conseillère en communication et développement de marché
+<section id="zha-hero" class="zha-hero" data-bg="red"
+        data-zha-mtl-lines="Notre base en Amérique du Nord, et|une porte d'entrée bilingue vers les|marchés anglophones et francophones|des deux côtés de l'Atlantique."
+        data-zha-shz-lines="Notre base en Chine, au cœur de la|fabrication et de l'innovation|technologique du pays.">
+  <div class="zha-hero__grain" aria-hidden="true"></div>
+
+  <svg class="zha-hero__map" data-zha-map="1" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMin slice" aria-hidden="true">
+    <g class="zha-hero__coast zha-hero__coast--lo" data-zha-coast="1" data-zha-coast-lo="1" fill="none" stroke="rgba(247,242,232,0.09)" stroke-width="1.15"></g>
+    <g class="zha-hero__coast zha-hero__coast--hi" data-zha-coast="1" data-zha-coast-hi="1" fill="none" stroke="rgba(247,242,232,0.22)" stroke-width="1.15"></g>
+    <g data-zha-route="1"></g>
+  </svg>
+
+  <svg class="zha-hero__curve" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 90 L0 46 C 360 -2, 1080 4, 1440 40 L1440 90 Z" fill="#FFFFFF"></path>
+  </svg>
+
+  <div class="zha-hero__inner">
+    <div class="zha-hero__lead">
+      <h1 class="zha-hero__title">
+        <span class="zha-hero__line zha-hero__line--1">Votre entreprise est prête à croître.</span>
+        <span class="zha-hero__line zha-hero__line--2">Votre marque ne l'est pas encore.</span>
+      </h1>
+      <a class="zha-hero__cta" href="https://calendly.com/zhenaixiao/30min">Réserver une consultation gratuite</a>
     </div>
 
-    <h1 class="hero-headline">
-      <span class="line-1">Votre entreprise est prête à croître.</span>
-      <span class="line-2">Votre marque ne l'est pas encore.</span>
-    </h1>
-
-    <p class="hero-shorthand">
-      Bâtissez la marque qu'exige votre croissance.
-    </p>
-  </section>
-</div>
+    <div class="zha-hero__triad">
+      <span class="zha-hero__rule" aria-hidden="true"></span>
+      <div class="zha-hero__triad-list">
+        <span class="zha-hero__triad-item">IMAGE DE MARQUE.</span>
+        <span class="zha-hero__triad-item">NOUVEAUX MARCHÉS.</span>
+        <span class="zha-hero__triad-item">PRODUCTION FIABLE.</span>
+      </div>
+    </div>
+  </div>
+</section>
 
 
 <!-- SERVICES -->
@@ -446,7 +469,7 @@
 
 
 <footer>
-  <div>© 2026 <span class="f-red">Zhenai Xiao</span> · Communication et développement de marché</div>
+  <div>© 2026 <span class="f-red">Zhenai Advisory</span> · Communication et développement de marché</div>
   <div style="display:flex; align-items:center; gap:24px;">
     <a href="/privacy/" style="color:var(--muted); transition:color 0.2s;" onmouseover="this.style.color='var(--red)'" onmouseout="this.style.color='var(--muted)'">Politique de confidentialité</a>
     <span>Montréal · 蒙特利尔</span>

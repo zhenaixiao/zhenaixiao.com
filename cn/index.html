@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>肖珍爱 — 传播与市场拓展顾问 | Zhenai Xiao</title>
+<title>Zhenai Advisory — 传播与市场拓展顾问</title>
 <meta name="description" content="肖珍爱，常驻加拿大蒙特利尔的传播与市场拓展顾问。帮助中国品牌在西方市场建立公信力。" />
 
 <link rel="alternate" hreflang="en" href="https://zhenaixiao.com/" />
@@ -17,13 +17,18 @@
 <link href="https://fonts.cdnfonts.com/css/the-seasons" rel="stylesheet">
 
 <link rel="stylesheet" href="/assets/style.css" />
+<link rel="stylesheet" href="/assets/hero.css" />
+
+<script defer src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
+<script defer src="/assets/hero.js"></script>
 </head>
 <body class="page-ch">
 
 <nav class="on-red">
   <div class="nav-mark">
     <span class="nav-dot"></span>
-    <span class="nav-name">肖珍爱</span>
+    <span class="nav-name">Zhenai Advisory</span>
   </div>
   <ul class="nav-links">
     <li><a href="#services">服务内容</a></li>
@@ -68,27 +73,43 @@
 
 
 <!-- HERO -->
-<div class="hero-block" data-bg="red">
-  <section class="hero">
-    <div class="hero-eyebrow">
-      传播与市场拓展顾问 · COMMUNICATIONS &amp; MARKET DEVELOPMENT CONSULTANT
+<section id="zha-hero" class="zha-hero" data-bg="red"
+        data-zha-mtl-name="蒙特利尔"
+        data-zha-shz-name="深圳"
+        data-zha-mtl-lines="我们在北美的基地，|也是通往英语与法语市场的双语门户，|业务横跨大西洋两岸。"
+        data-zha-shz-lines="我们在中国的基地，|位于国家制造业与科技创新的中心。"
+        data-zha-label-font="'Noto Serif SC', 'PingFang SC', 'Songti SC', serif">
+  <div class="zha-hero__grain" aria-hidden="true"></div>
+
+  <svg class="zha-hero__map" data-zha-map="1" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMin slice" aria-hidden="true">
+    <g class="zha-hero__coast zha-hero__coast--lo" data-zha-coast="1" data-zha-coast-lo="1" fill="none" stroke="rgba(247,242,232,0.09)" stroke-width="1.15"></g>
+    <g class="zha-hero__coast zha-hero__coast--hi" data-zha-coast="1" data-zha-coast-hi="1" fill="none" stroke="rgba(247,242,232,0.22)" stroke-width="1.15"></g>
+    <g data-zha-route="1"></g>
+  </svg>
+
+  <svg class="zha-hero__curve" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 90 L0 46 C 360 -2, 1080 4, 1440 40 L1440 90 Z" fill="#FFFFFF"></path>
+  </svg>
+
+  <div class="zha-hero__inner">
+    <div class="zha-hero__lead">
+      <h1 class="zha-hero__title">
+        <span class="zha-hero__line zha-hero__line--1">您的产品已准备好进入西方市场。</span>
+        <span class="zha-hero__line zha-hero__line--2">您的品牌呢？</span>
+      </h1>
+      <a class="zha-hero__cta" href="https://calendly.com/zhenaixiao/30min">预约免费咨询</a>
     </div>
 
-    <!-- ZH panel — full Chinese block -->
-    <div class="hero-panel zh-panel">
-      <span class="zh-line m1">您的产品已准备好进入西方市场。</span>
-      <span class="zh-line line-emph m2">您的品牌呢？</span>
-      <span class="zh-line line-tagline m3">品牌先行，产品制胜。</span>
+    <div class="zha-hero__triad">
+      <span class="zha-hero__rule" aria-hidden="true"></span>
+      <div class="zha-hero__triad-list">
+        <span class="zha-hero__triad-item">全球品牌塑造。</span>
+        <span class="zha-hero__triad-item">开拓新市场。</span>
+        <span class="zha-hero__triad-item">可信赖的生产。</span>
+      </div>
     </div>
-
-    <!-- EN panel — full English block, smaller, below -->
-    <div class="hero-panel en-panel">
-      <span class="en-line m1">Your product is ready for Western markets.</span>
-      <span class="en-line line-emph m2">Your brand may not be.</span>
-      <span class="en-line line-tagline m3">Be brand-ready, not just product-ready.</span>
-    </div>
-  </section>
-</div>
+  </div>
+</section>
 
 
 <!-- WHAT I DO -->
@@ -422,7 +443,7 @@
 
 
 <footer>
-  <div>© 2026 <span class="f-red">肖珍爱 Zhenai Xiao</span> · 传播与市场拓展</div>
+  <div>© 2026 <span class="f-red">Zhenai Advisory</span> · 传播与市场拓展</div>
   <div style="display:flex; align-items:center; gap:24px;">
     <a href="/privacy/" style="color:var(--muted); transition:color 0.2s;" onmouseover="this.style.color='var(--red)'" onmouseout="this.style.color='var(--muted)'">隐私政策</a>
     <span>蒙特利尔 · Montréal</span>
