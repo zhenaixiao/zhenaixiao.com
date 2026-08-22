@@ -81,12 +81,11 @@
 }
 .zha-hero__lead { display: flex; flex-direction: column; align-items: flex-start; }
 .zha-hero__title {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  /* Cormorant is a display Garamond: far lighter and smaller on the body than
-     Georgia, which this hero was originally proofed against. Bumped in size and
-     weight so the headline keeps its presence on the red. */
-  font-weight: 600;
-  font-size: clamp(34px, 4.1vw, 58px);
+  /* Georgia, declared explicitly. This is the face the hero has always
+     actually rendered in, and the one that was signed off. */
+  font-family: Georgia, 'Times New Roman', serif;
+  font-weight: 400;
+  font-size: clamp(30px, 3.55vw, 50px);
   line-height: 1.16;
   letter-spacing: -0.022em;
   color: #F7F2E8;
@@ -170,7 +169,7 @@
 }
 
 /* ---- integration: CJK pages -------------------------------------------
-   Poppins and Cormorant Garamond carry no CJK glyphs. On /cn/ fall back to the
+   Poppins and the display serif carry no CJK glyphs. On /cn/ fall back to the
    same Chinese faces the rest of that page already uses, so the hero does
    not render Chinese in a system default that clashes with the page. */
 .zha-hero:lang(zh) {
@@ -178,8 +177,4 @@
 }
 .zha-hero:lang(zh) .zha-hero__title {
   font-family: 'Noto Serif SC', 'Songti SC', Georgia, serif;
-  /* the size/weight bump above compensates for Cormorant specifically; Noto
-     Serif SC needs neither, and CJK glyphs already run large at a given size. */
-  font-weight: 400;
-  font-size: clamp(30px, 3.55vw, 50px);
 }
