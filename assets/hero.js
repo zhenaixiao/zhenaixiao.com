@@ -99,7 +99,8 @@
         if (needAbove + needBelow <= band) break;
         if (gap > 10 * u) gap = Math.max(10 * u, gap - 6 * u);
         else if (bow > 14 * u) bow = Math.max(14 * u, bow - 6 * u);
-        else shrink *= 0.94;
+        else if (shrink > 0.8) shrink = Math.max(0.8, shrink * 0.94);
+        else break; /* never shrink the labels past legibility */
       }
       var mtlY = bandTop + needAbove + Math.max(0, (band - needAbove - needBelow) / 2);
       /* hard stop: the lower block never crosses into the headline */
@@ -200,10 +201,15 @@
       });
       route.appendChild(d);
       if (!reduced) {
-        var delays = [T_MAP, T_MAP, T_REST];
-        [dot, t, d].forEach(function (el, i) {
-          el.style.opacity = '0';
-          el.style.animation = 'zha-settle 0.5s cubic-bezier(0.16, 1, 0.3, 1) ' + delays[i] + 's forwards';
+        dot.style.opacity = '0';
+        dot.style.animation = 'zha-settle 0.5s cubic-bezier(0.16, 1, 0.3, 1) ' + T_MAP + 's forwards';
+        /* the name and the blurb drift down out of the dot rather than
+           snapping in, on a gentle ease and over about twice as long */
+        [[t, T_MAP, 1.15], [d, T_REST, 1.3]].forEach(function (cfg) {
+          cfg[0].style.opacity = '0';
+          cfg[0].style.animation = 'zha-drop ' + cfg[2] + 's cubic-bezier(0.25, 0.8, 0.35, 1) ' + cfg[1] + 's forwards';
+        });
+        [dot, t, d].forEach(function (el) {
           el.style.transformBox = 'fill-box';
           el.style.transformOrigin = 'center';
         });

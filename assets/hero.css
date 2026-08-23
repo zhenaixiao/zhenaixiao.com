@@ -7,6 +7,8 @@
 @keyframes zha-draw { from { stroke-dashoffset: var(--zha-len, 1000); } to { stroke-dashoffset: 0; } }
 @keyframes zha-settle { from { opacity: 0; transform: scale(1.6); } to { opacity: 1; transform: scale(1); } }
 @keyframes zha-rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+/* city name / blurb: drifts down out of the dot instead of snapping in */
+@keyframes zha-drop { from { opacity: 0; transform: translateY(-22px); } to { opacity: 1; transform: translateY(0); } }
 
 /* ---- hero shell ---- */
 .zha-hero {
@@ -167,16 +169,16 @@
   .zha-hero__triad { align-self: end; }
   .zha-hero__triad-list { align-items: flex-end; }
   .zha-hero__triad-item { text-align: right; }
-  /* tighten the lower block so the triad is not crowded by the fixed rail */
-  .zha-hero__inner { gap: 26px; }
-  .zha-hero__title { margin-bottom: 34px; }
-}
-/* Short phones: the rail is pinned to the viewport bottom, so on a short
-   screen it climbs into the triad (they actually overlapped at 390x667).
-   Lift the whole block by easing the top padding, which also gives the map
-   annotation more of the band above the headline. */
-@media (max-width: 640px) and (max-height: 780px) {
-  .zha-hero__inner { padding-top: clamp(215px, 36svh, 430px); }
+  /* Reclaim room below the triad from the lower block itself. Easing the top
+     padding would be the obvious lever, but it steals the band the map
+     annotation needs above the headline and forces the labels to shrink. */
+  .zha-hero__inner { gap: 24px; }
+  .zha-hero__title { margin-bottom: 30px; }
+  .zha-hero__cta { min-height: 48px; padding: 14px 28px; }
+  /* only the shortest screens reach this floor; 42svh still governs from
+     about 712px up, so taller phones keep their current proportions */
+  .zha-hero__inner { padding-top: clamp(272px, 42svh, 430px); }
+  .zha-hero__triad, .zha-hero__triad-list { gap: 14px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .zha-hero__line,
