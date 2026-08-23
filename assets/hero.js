@@ -176,7 +176,9 @@
       t.setAttribute('x', x.toFixed(1));
       t.setAttribute('y', nameY.toFixed(1));
       t.setAttribute('text-anchor', anchor);
-      t.setAttribute('fill', 'rgba(247,242,232,0.85)');
+      /* kept above the blurb's 0.82 so the city name still reads as the
+         heading of its block */
+      t.setAttribute('fill', 'rgba(247,242,232,0.96)');
       t.setAttribute('font-family', LABEL_FONT);
       t.setAttribute('font-size', S.name.toFixed(1));
       t.setAttribute('font-weight', '500');
@@ -187,10 +189,12 @@
       d.setAttribute('x', x.toFixed(1));
       d.setAttribute('y', (nameY + S.name * 0.5 + S.lead).toFixed(1));
       d.setAttribute('text-anchor', anchor);
-      d.setAttribute('fill', 'rgba(247,242,232,0.55)');
+      d.setAttribute('fill', 'rgba(247,242,232,0.82)');
       d.setAttribute('font-family', LABEL_FONT);
       d.setAttribute('font-size', S.desc.toFixed(1));
-      d.setAttribute('font-weight', '300');
+      /* Regular rather than Light: at this size on a busy red gradient the
+         lighter weight was the readability problem, not the size. */
+      d.setAttribute('font-weight', '400');
       d.setAttribute('letter-spacing', S.dls.toFixed(2));
       lines.forEach(function (ln, i) {
         var ts = document.createElementNS(NS, 'tspan');

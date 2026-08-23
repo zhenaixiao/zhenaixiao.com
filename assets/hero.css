@@ -172,8 +172,11 @@
   /* Reclaim room below the triad from the lower block itself. Easing the top
      padding would be the obvious lever, but it steals the band the map
      annotation needs above the headline and forces the labels to shrink. */
-  .zha-hero__inner { gap: 24px; }
-  .zha-hero__title { margin-bottom: 30px; }
+  /* air above and below the CTA, scaled to the viewport: taller phones have
+     room to spare over the rail, the shortest ones do not. Only the lower
+     block moves, so the map band above the headline is untouched. */
+  .zha-hero__title { margin-bottom: clamp(32px, 5vh, 50px); }
+  .zha-hero__inner { gap: clamp(26px, 4vh, 42px); }
   .zha-hero__cta { min-height: 48px; padding: 14px 28px; }
   /* only the shortest screens reach this floor; 42svh still governs from
      about 712px up, so taller phones keep their current proportions */
