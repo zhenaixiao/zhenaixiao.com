@@ -47,30 +47,78 @@
     // the sliced viewBox window actually on screen, in viewBox units
     var halfW = (box.width * u) / 2;
     var visL = 800 - halfW, visR = 800 + halfW;
-    var lift = narrow ? 92 * u : 131;
     var blockW = 178 * u;
     var room = blockW + 16 * u;
-    // Narrow viewports slice the viewBox tighter than the true longitude span,
-    // so there the pair is placed by hand (the coastlines are hidden anyway).
-    var mtlX = narrow ? visL + 42 * u : pm[0];
-    var shzX = narrow ? visR - 42 * u : ps[0];
-    // each block sits outboard of its dot in open water where there is room,
-    // and drops below the dot when it has to sit inboard of the arc instead
-    var mtlSide = (mtlX - visL) > room ? 'left' : 'right';
-    var shzSide = ((visR - (narrow ? 0 : RIGHT_GUTTER * u)) - shzX) > room ? 'right' : 'left';
     var clusterH = (12 * 1.4 + 4 * 15.5) * u;
-    var mtlDrop = mtlSide === 'left' ? 0 : clusterH / 2 + 14 * u;
-    var shzDrop = shzSide === 'right' ? 0 : clusterH / 2 + 14 * u;
-    // the lower annotation stops just above the headline; the arc flattens when
-    // the remaining band is short rather than crowding the header
-    var low = (headTop - 34) * u - clusterH / 2 - shzDrop;
-    var span = shzX - mtlX;
-    var bow = Math.max(20 * u, Math.min(span * 0.085, low - lift - 95 * u));
-    var dy = low - ps[1];
-    coasts.forEach(function (g) { if (g) g.setAttribute('transform', 'translate(0,' + dy.toFixed(1) + ')'); });
-    var mtl = narrow ? [mtlX, low - lift] : [mtlX, pm[1] + dy];
-    var shz = [shzX, low];
     var S = { r: 4.6 * u, w: 1.15 * u, name: 12 * u, nls: 2.5 * u, desc: 10.5 * u, dls: 0.3 * u, off: 14 * u, lead: 15.5 * u };
+    var mtlX, shzX, mtlSide, shzSide, mtlDrop, shzDrop, mtl, shz, bow;
+
+    if (narrow) {
+      /* A phone slices the viewBox far tighter than the Montreal-Shenzhen
+         longitude span, so Montreal falls outside it entirely. Scale the map
+         down until that span fits the width: both dots then sit on their true
+         projected positions and the coastlines line up underneath them. */
+      var sideM = 56 * u;
+      var s = ((visR - visL) - sideM * 2) / (ps[0] - pm[0]);
+      mtlX = visL + sideM;
+      shzX = mtlX + (ps[0] - pm[0]) * s;
+      var vOff = (ps[1] - pm[1]) * s;
+      mtlSide = 'right';
+      shzSide = 'left';
+      /* measure each block from its own line count rather than a worst case,
+         which is what leaves room for all of this to fit */
+      var mtlH = (12 * 1.4 + MTL_LINES.length * 15.5) * u;
+      var shzH = (12 * 1.4 + SHZ_LINES.length * 15.5) * u;
+      var gap = 24 * u;
+      mtlDrop = mtlH / 2 + 14 * u;
+      /* at this scale the pair sits only vOff apart, so the two blocks would
+         overlap; stack Shenzhen's a clear `gap` below Montreal's instead */
+      shzDrop = mtlH + 14 * u + gap + shzH / 2 - vOff;
+      bow = Math.min((shzX - mtlX) * 0.085, 40 * u);
+      /* centre the whole annotation in the band between the fixed nav and the
+         headline, so neither dot can be clipped by the top edge */
+      var navEl = document.querySelector('nav');
+      var navH = (navEl ? navEl.getBoundingClientRect().height : 0) * u;
+      var bandTop = navH + 20 * u;
+      var bandBot = headTop * u - 24 * u;
+      var needAbove = bow + S.r * 2;
+      var needBelow = vOff + shzDrop + shzH / 2;
+      var slack = Math.max(0, (bandBot - bandTop) - (needAbove + needBelow));
+      var mtlY = bandTop + needAbove + slack / 2;
+      mtl = [mtlX, mtlY];
+      shz = [shzX, mtlY + vOff];
+      var tx = mtlX - pm[0] * s, ty = mtlY - pm[1] * s;
+      coasts.forEach(function (g) {
+        if (!g) return;
+        g.setAttribute('transform', 'translate(' + tx.toFixed(1) + ',' + ty.toFixed(1) + ') scale(' + s.toFixed(4) + ')');
+        /* the transform scales the stroke too; keep the hairline as fine as it
+           reads on desktop */
+        g.setAttribute('stroke-width', (1.15 / s).toFixed(2));
+      });
+    } else {
+      var lift = 131;
+      mtlX = pm[0];
+      shzX = ps[0];
+      // each block sits outboard of its dot in open water where there is room,
+      // and drops below the dot when it has to sit inboard of the arc instead
+      mtlSide = (mtlX - visL) > room ? 'left' : 'right';
+      shzSide = ((visR - RIGHT_GUTTER * u) - shzX) > room ? 'right' : 'left';
+      mtlDrop = mtlSide === 'left' ? 0 : clusterH / 2 + 14 * u;
+      shzDrop = shzSide === 'right' ? 0 : clusterH / 2 + 14 * u;
+      // the lower annotation stops just above the headline; the arc flattens
+      // when the remaining band is short rather than crowding the header
+      var low = (headTop - 34) * u - clusterH / 2 - shzDrop;
+      var span = shzX - mtlX;
+      bow = Math.max(20 * u, Math.min(span * 0.085, low - lift - 95 * u));
+      var dy = low - ps[1];
+      coasts.forEach(function (g) {
+        if (!g) return;
+        g.setAttribute('transform', 'translate(0,' + dy.toFixed(1) + ')');
+        g.setAttribute('stroke-width', '1.15');
+      });
+      mtl = [mtlX, pm[1] + dy];
+      shz = [shzX, low];
+    }
 
     var cx = (mtl[0] + shz[0]) / 2;
     var cy = Math.min(mtl[1], shz[1]) - bow;
@@ -144,7 +192,7 @@
     // both blocks sit outboard, just clear of their dot and of the coastlines
     var outward = 30 * u;
     var mtlOff = mtlSide === 'left' ? Math.max(S.off, Math.min(outward, mtlX - visL - blockW - 24 * u)) : S.off;
-    var shzOff = shzSide === 'right' ? Math.max(S.off, Math.min(outward, visR - (narrow ? 0 : RIGHT_GUTTER * u) - shzX - blockW - 24 * u)) : S.off;
+    var shzOff = shzSide === 'right' ? Math.max(S.off, Math.min(outward, visR - RIGHT_GUTTER * u - shzX - blockW - 24 * u)) : S.off;
     mark(mtl, MTL_NAME, MTL_LINES, mtlSide, mtlDrop, mtlOff);
     mark(shz, SHZ_NAME, SHZ_LINES, shzSide, shzDrop, shzOff);
 

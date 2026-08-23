@@ -94,6 +94,9 @@
 }
 .zha-hero__line { display: block; opacity: 0; }
 .zha-hero__line--1 { animation: zha-rise 0.8s cubic-bezier(0.16, 1, 0.3, 1) 1.75s forwards; }
+/* a little more air between the two lines only — margin rather than
+   line-height, so leading inside a wrapped line is untouched */
+.zha-hero__line--2 { margin-top: 0.16em; }
 .zha-hero__line--2 { animation: zha-rise 0.8s cubic-bezier(0.16, 1, 0.3, 1) 1.87s forwards; }
 
 .zha-hero__cta {
@@ -158,8 +161,12 @@
   .zha-hero__triad { align-self: start; }
 }
 @media (max-width: 640px) {
-  .zha-hero__coast { display: none; }
+  /* the coastlines used to be hidden here because the sliced viewBox did not
+     contain Montreal; the script now scales the map to the city span instead */
   .zha-hero__cta { width: 100%; }
+  .zha-hero__triad { align-self: end; }
+  .zha-hero__triad-list { align-items: flex-end; }
+  .zha-hero__triad-item { text-align: right; }
 }
 @media (prefers-reduced-motion: reduce) {
   .zha-hero__line,
@@ -173,6 +180,10 @@
    same Chinese faces the rest of that page already uses, so the hero does
    not render Chinese in a system default that clashes with the page. */
 .zha-hero:lang(zh) {
+  font-family: 'Poppins', 'Noto Sans SC', 'PingFang SC', system-ui, sans-serif;
+}
+.zha-hero:lang(zh) .zha-hero__cta {
+  /* the CTA declares its own stack, so it needs the CJK face naming too */
   font-family: 'Poppins', 'Noto Sans SC', 'PingFang SC', system-ui, sans-serif;
 }
 .zha-hero:lang(zh) .zha-hero__title {
