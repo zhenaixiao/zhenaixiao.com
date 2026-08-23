@@ -13,6 +13,15 @@
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var raf = null, cycle = null, redrawTimer = null;
 
+  /* Intro timeline (seconds). The beats are deliberate: the map lands first,
+     then the headline reads line by line, then everything else follows.
+       T_MAP   arc draw + city dots + city names, together
+       T_LINE1 first headline line
+       T_LINE2 second line - a short beat after the first, not another wait
+       T_REST  city descriptions, CTA, triad
+     T_LINE1/T_LINE2 are mirrored in hero.css for the DOM elements. */
+  var T_MAP = 0.2, T_LINE1 = 1.6, T_LINE2 = 1.95, T_REST = 2.3;
+
   var MTL = [-73.57, 45.50];
   var SHZ = [114.06, 22.54];
   /* --- per-page config, read from data-* on #zha-hero (English defaults) --- */
@@ -148,7 +157,7 @@
     } else {
       arc.style.strokeDashoffset = len;
       arc.style.setProperty('--zha-len', len);
-      arc.style.animation = 'zha-draw 1.6s cubic-bezier(0.16, 1, 0.3, 1) 0.25s forwards';
+      arc.style.animation = 'zha-draw 1.4s cubic-bezier(0.16, 1, 0.3, 1) ' + T_MAP + 's forwards';
     }
 
     var mark = function (pt, name, lines, side, drop, off) {
@@ -191,9 +200,10 @@
       });
       route.appendChild(d);
       if (!reduced) {
+        var delays = [T_MAP, T_MAP, T_REST];
         [dot, t, d].forEach(function (el, i) {
           el.style.opacity = '0';
-          el.style.animation = 'zha-settle 0.5s cubic-bezier(0.16, 1, 0.3, 1) ' + (1.75 + i * 0.07) + 's forwards';
+          el.style.animation = 'zha-settle 0.5s cubic-bezier(0.16, 1, 0.3, 1) ' + delays[i] + 's forwards';
           el.style.transformBox = 'fill-box';
           el.style.transformOrigin = 'center';
         });
@@ -241,7 +251,7 @@
       };
       raf = requestAnimationFrame(step);
     };
-    setTimeout(travel, 2400);
+    setTimeout(travel, 3100);
     cycle = setInterval(travel, 14500);
   }
 

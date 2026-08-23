@@ -93,11 +93,11 @@
   text-wrap: pretty;
 }
 .zha-hero__line { display: block; opacity: 0; }
-.zha-hero__line--1 { animation: zha-rise 0.8s cubic-bezier(0.16, 1, 0.3, 1) 1.75s forwards; }
+.zha-hero__line--1 { animation: zha-rise 0.8s cubic-bezier(0.16, 1, 0.3, 1) 1.6s forwards; }
 /* a little more air between the two lines only — margin rather than
    line-height, so leading inside a wrapped line is untouched */
 .zha-hero__line--2 { margin-top: 0.16em; }
-.zha-hero__line--2 { animation: zha-rise 0.8s cubic-bezier(0.16, 1, 0.3, 1) 1.87s forwards; }
+.zha-hero__line--2 { animation: zha-rise 0.8s cubic-bezier(0.16, 1, 0.3, 1) 1.95s forwards; }
 
 .zha-hero__cta {
   display: inline-flex;
@@ -117,7 +117,7 @@
   border: none;
   transition: background 0.2s, color 0.2s;
   opacity: 0;
-  animation: zha-rise 0.8s cubic-bezier(0.16, 1, 0.3, 1) 2.15s forwards;
+  animation: zha-rise 0.8s cubic-bezier(0.16, 1, 0.3, 1) 2.38s forwards;
 }
 .zha-hero__cta:hover, .zha-hero__cta:focus-visible { background: #E9DDC6; color: #6B0F1C; }
 
@@ -142,7 +142,7 @@
   flex-direction: column;
   gap: 17px;
   opacity: 0;
-  animation: zha-rise 0.8s cubic-bezier(0.16, 1, 0.3, 1) 2.03s forwards;
+  animation: zha-rise 0.8s cubic-bezier(0.16, 1, 0.3, 1) 2.46s forwards;
 }
 .zha-hero__triad-item {
   font-size: 12px;
@@ -167,6 +167,16 @@
   .zha-hero__triad { align-self: end; }
   .zha-hero__triad-list { align-items: flex-end; }
   .zha-hero__triad-item { text-align: right; }
+  /* tighten the lower block so the triad is not crowded by the fixed rail */
+  .zha-hero__inner { gap: 26px; }
+  .zha-hero__title { margin-bottom: 34px; }
+}
+/* Short phones: the rail is pinned to the viewport bottom, so on a short
+   screen it climbs into the triad (they actually overlapped at 390x667).
+   Lift the whole block by easing the top padding, which also gives the map
+   annotation more of the band above the headline. */
+@media (max-width: 640px) and (max-height: 780px) {
+  .zha-hero__inner { padding-top: clamp(215px, 36svh, 430px); }
 }
 @media (prefers-reduced-motion: reduce) {
   .zha-hero__line,
