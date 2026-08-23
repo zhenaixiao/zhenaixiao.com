@@ -28,7 +28,7 @@
   var SHZ_NAME  = cfg('shz-name', 'SHENZHEN');
   var LABEL_FONT = cfg('label-font', "'Poppins', system-ui, sans-serif");
   var TOPO_URL   = cfg('topo', '/assets/countries-110m.json');
-  var MTL_LINES = cfgLines('mtl-lines', ['Our base in North America, and a', 'bilingual entry point into English', 'and French-speaking markets on', 'both sides of the Atlantic.']);
+  var MTL_LINES = cfgLines('mtl-lines', ['Our base in North America, and a', 'bilingual entry point into English', 'and French-speaking markets.']);
   var SHZ_LINES = cfgLines('shz-lines', ["Our base in China, at the centre of", "the country's manufacturing and", 'technological innovation.']);
   /* reserve for a fixed right-hand contact rail, if the page has one. 0 = none. */
   var RIGHT_GUTTER = parseFloat(cfg('right-gutter', '66'));
@@ -65,26 +65,37 @@
       var vOff = (ps[1] - pm[1]) * s;
       mtlSide = 'right';
       shzSide = 'left';
-      /* measure each block from its own line count rather than a worst case,
-         which is what leaves room for all of this to fit */
-      var mtlH = (12 * 1.4 + MTL_LINES.length * 15.5) * u;
-      var shzH = (12 * 1.4 + SHZ_LINES.length * 15.5) * u;
-      var gap = 24 * u;
-      mtlDrop = mtlH / 2 + 14 * u;
-      /* at this scale the pair sits only vOff apart, so the two blocks would
-         overlap; stack Shenzhen's a clear `gap` below Montreal's instead */
-      shzDrop = mtlH + 14 * u + gap + shzH / 2 - vOff;
       bow = Math.min((shzX - mtlX) * 0.085, 40 * u);
-      /* centre the whole annotation in the band between the fixed nav and the
-         headline, so neither dot can be clipped by the top edge */
+      /* The annotation lives in the band between the fixed nav and the
+         headline. Short viewports leave less of it, so tighten the stack to
+         fit - gap first, then the bow, then the type - rather than letting
+         the lower block run into the headline. */
       var navEl = document.querySelector('nav');
       var navH = (navEl ? navEl.getBoundingClientRect().height : 0) * u;
       var bandTop = navH + 20 * u;
       var bandBot = headTop * u - 24 * u;
-      var needAbove = bow + S.r * 2;
-      var needBelow = vOff + shzDrop + shzH / 2;
-      var slack = Math.max(0, (bandBot - bandTop) - (needAbove + needBelow));
-      var mtlY = bandTop + needAbove + slack / 2;
+      var band = bandBot - bandTop;
+      var gap = 24 * u, shrink = 1, mtlH, shzH, needAbove, needBelow;
+      for (var i = 0; i < 24; i++) {
+        S.name = 12 * u * shrink; S.desc = 10.5 * u * shrink; S.lead = 15.5 * u * shrink;
+        /* measure each block from its own line count, not a worst case */
+        mtlH = S.name * 1.4 + MTL_LINES.length * S.lead;
+        shzH = S.name * 1.4 + SHZ_LINES.length * S.lead;
+        mtlDrop = mtlH / 2 + 14 * u;
+        /* at map scale the pair sits only vOff apart, so the blocks would
+           collide; stack Shenzhen's a clear `gap` below Montreal's */
+        shzDrop = mtlH + 14 * u + gap + shzH / 2 - vOff;
+        needAbove = bow + S.r * 2;
+        needBelow = vOff + shzDrop + shzH / 2;
+        if (needAbove + needBelow <= band) break;
+        if (gap > 10 * u) gap = Math.max(10 * u, gap - 6 * u);
+        else if (bow > 14 * u) bow = Math.max(14 * u, bow - 6 * u);
+        else shrink *= 0.94;
+      }
+      var mtlY = bandTop + needAbove + Math.max(0, (band - needAbove - needBelow) / 2);
+      /* hard stop: the lower block never crosses into the headline */
+      mtlY = Math.min(mtlY, bandBot - needBelow);
+      mtlY = Math.max(mtlY, navH + 10 * u + needAbove);
       mtl = [mtlX, mtlY];
       shz = [shzX, mtlY + vOff];
       var tx = mtlX - pm[0] * s, ty = mtlY - pm[1] * s;
@@ -246,7 +257,10 @@
     try {
       var topo = await fetch(TOPO_URL).then(function (r) { return r.json(); });
       // a === b keeps only exterior rings: coastlines, no internal country borders
-      var shore = window.topojson.mesh(topo, topo.objects.countries, function (a, b) { return a === b; });
+      // Antarctica is clutter at every size here, so drop it before meshing
+      var countries = topo.objects.countries;
+      var without = { type: countries.type, geometries: countries.geometries.filter(function (g) { return g.id !== '010'; }) };
+      var shore = window.topojson.mesh(topo, without, function (a, b) { return a === b; });
       var d = path(shore);
       [coastLo, coastHi].forEach(function (g) {
         var p = document.createElementNS(NS, 'path');
